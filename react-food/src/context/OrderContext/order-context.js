@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useState } from "react";
 
 const OrderContext = createContext({
   pula: "pizda",
@@ -31,11 +31,18 @@ const cartReducer = (state, action) => {
 
 export const OrderContextProvider = (props) => {
   const [cartState, dispatchCart] = useReducer(cartReducer, []);
+  const [cartModalVisible, setCartModalVisible] = useState(false);
   const addToCart = (mealObj) => {
     dispatchCart({ type: "ADD", meal: mealObj });
   };
   const removeFromCart = (mealObj) => {
     dispatchCart({ type: "REMOVE", meal: mealObj });
+  };
+  const displayCartModal = () => {
+    setCartModalVisible(true);
+  };
+  const hideCartModal = () => {
+    setCartModalVisible(false);
   };
   return (
     <OrderContext.Provider
@@ -43,6 +50,9 @@ export const OrderContextProvider = (props) => {
         addMeal: addToCart,
         removeMeal: removeFromCart,
         cartState: cartState,
+        displayCartModal: displayCartModal,
+        hideCartModal: hideCartModal,
+        cartModalVisible: cartModalVisible,
       }}
     >
       {props.children}
