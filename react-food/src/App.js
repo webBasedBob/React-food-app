@@ -1,24 +1,29 @@
-import "./App.css";
-import Header from "./components/Header/Header/Header";
-import DUMMY_MEALS from "./dummy-meals";
-import AvailableMeals from "./components/AvailableMeals/AvailableMeals";
-import ContentContainer from "./components/UI/ContentContainer/ContentContainer";
-import { OrderContextProvider } from "./context/OrderContext/order-context";
-import MealsContext, {
-  MealsContextProvider,
-} from "./context/MealsContext/MealsContext";
-import Cart from "./components/UI/Cart/Cart";
+import { useState } from 'react';
+
+import Header from './components/Layout/Header';
+import Meals from './components/Meals/Meals';
+import Cart from './components/Cart/Cart';
+import CartProvider from './store/CartProvider';
+
 function App() {
+  const [cartIsShown, setCartIsShown] = useState(false);
+
+  const showCartHandler = () => {
+    setCartIsShown(true);
+  };
+
+  const hideCartHandler = () => {
+    setCartIsShown(false);
+  };
+
   return (
-    <MealsContextProvider>
-      <OrderContextProvider>
-        <Cart></Cart>
-        <Header />
-        <ContentContainer>
-          <AvailableMeals />
-        </ContentContainer>
-      </OrderContextProvider>
-    </MealsContextProvider>
+    <CartProvider>
+      {cartIsShown && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler} />
+      <main>
+        <Meals />
+      </main>
+    </CartProvider>
   );
 }
 
