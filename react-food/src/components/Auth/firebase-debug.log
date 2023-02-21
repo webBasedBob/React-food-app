@@ -1,0 +1,21 @@
+[debug] [2023-02-18T00:44:49.118Z] ----------------------------------------------------------------------
+[debug] [2023-02-18T00:44:49.120Z] Command:       C:\Users\paraz\AppData\Roaming\npm\node_modules\node\bin\node.exe C:\Users\paraz\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-02-18T00:44:49.120Z] CLI Version:   11.19.0
+[debug] [2023-02-18T00:44:49.121Z] Platform:      win32
+[debug] [2023-02-18T00:44:49.121Z] Node Version:  v19.3.0
+[debug] [2023-02-18T00:44:49.121Z] Time:          Sat Feb 18 2023 02:44:49 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-02-18T00:44:49.121Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-02-18T00:44:49.128Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-02-18T00:44:49.128Z] > authorizing via signed-in user (catalin.b.pop97@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\git_repos\React-food-app\react-food\src\components\Auth
+
