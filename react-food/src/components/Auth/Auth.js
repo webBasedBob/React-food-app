@@ -5,6 +5,7 @@ import Input from "../UI/Input";
 import Button from "../UI/Button";
 import { connect } from "react-redux";
 import store, { authActions } from "../../redux-store";
+import { logInAction, signUpAction } from "../../redux-store";
 class Auth extends Component {
   constructor() {
     super();
@@ -25,6 +26,7 @@ class Auth extends Component {
       email: this.state.email,
       password: this.state.password,
     };
+    console.log(this.props);
     if (this.state["auth-method-login"]) {
       this.props.logIn(userCredentials);
     }
@@ -104,10 +106,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatchFn) => {
   return {
     logIn: (userCredentials) => {
-      dispatchFn(authActions.logIn(userCredentials));
+      dispatchFn(logInAction(userCredentials));
     },
     signIn: (userCredentials) => {
-      dispatchFn(authActions.signIn(userCredentials));
+      dispatchFn(signUpAction(userCredentials));
     },
     closeAuthModal: () => {
       dispatchFn(authActions.hideModal());

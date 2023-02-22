@@ -6,7 +6,9 @@ import Checkout from "./components/Checkout/Checkout";
 import useIsVisible from "./hooks/use-is-visible";
 import Auth from "./components/Auth/Auth";
 import { useSelector } from "react-redux";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { authActions } from "./redux-store";
+import { useDispatch } from "react-redux";
 function App() {
   const {
     isVisible: cartIsShown,
@@ -22,10 +24,17 @@ function App() {
   const displayAuthModal = useSelector((state) => {
     return state.auth.displayAuthModal;
   });
-
+  let dispatch = useDispatch();
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    console.log(user);
+    if (user) {
+      dispatch(authActions.logIn(user.email));
+    }
+  });
   return (
     <CartProvider>
-      {displayAuthModal ? <Auth></Auth> : ""}
+      {displayAuthModal && <Auth></Auth>}
       {checkoutIsShown && (
         <Checkout
           onClose={hideCheckoutHandler}
