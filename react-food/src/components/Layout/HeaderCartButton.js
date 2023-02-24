@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 
-import CartIcon from "../Cart/CartIcon";
+import CartIcon from "../Checkout/CartIcon";
 import CartContext from "../../store/cart-context";
-import classes from "./HeaderCartButton.module.css";
+import classes from "./HeaderCartButton.module.scss";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const HeaderCartButton = (props) => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
   const items = useSelector((state) => {
@@ -34,13 +35,13 @@ const HeaderCartButton = (props) => {
   }, [items]);
 
   return (
-    <button className={btnClasses} onClick={props.onClick}>
+    <Link to="/checkout" className={btnClasses} onClick={props.onClick}>
       <span className={classes.icon}>
         <CartIcon />
       </span>
       <span>Your Cart</span>
       <span className={classes.badge}>{numberOfCartItems}</span>
-    </button>
+    </Link>
   );
 };
 

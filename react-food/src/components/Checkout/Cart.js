@@ -1,8 +1,8 @@
-import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import { cartActions } from "../../redux-store/index";
 import { useDispatch, useSelector } from "react-redux";
+import Card from "../UI/Card";
 const Cart = (props) => {
   const dispatch = useDispatch();
   const amount = useSelector((state) => {
@@ -41,7 +41,7 @@ const Cart = (props) => {
     props.onClose();
   };
   return (
-    <Modal onClose={props.onClose}>
+    <Card>
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
@@ -57,7 +57,7 @@ const Cart = (props) => {
           </button>
         )}
       </div>
-    </Modal>
+    </Card>
   );
 };
 
