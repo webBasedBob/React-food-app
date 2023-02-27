@@ -56,6 +56,13 @@
   cursor: pointer;
   margin-left: 1rem;
   margin: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item button svg {
+  transform: scale(0.7);
 }
 
 .cart-item button:hover,

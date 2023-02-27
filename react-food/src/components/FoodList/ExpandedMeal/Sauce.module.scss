@@ -1,0 +1,46 @@
+.sauce-name {
+  padding: 0;
+  margin: 0;
+  text-transform: capitalize;
+}
+.list-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+.list-row.active {
+  opacity: 1;
+}
+.list-row.inactive .icon:hover {
+  background-color: #fff;
+  color: #8c1f38;
+}
+.list-row.inactive .icon {
+  cursor: default;
+}
+.icon {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.icon.plus {
+  background-color: #fff;
+  color: #8c1f38;
+  &:hover {
+    background-color: #8c1f3852;
+    color: #8c1f38;
+  }
+}
+.icon.checkmark {
+  background-color: #8c1f38;
+  color: #fff;
+  & svg {
+    transform: scale(0.7);
+  }
+  &:hover {
+    background-color: #8c1f38;
+    color: #fff;
+  }
+}

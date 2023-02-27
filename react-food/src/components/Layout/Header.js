@@ -1,5 +1,6 @@
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Fragment } from "react";
-
+import Auth from "../Auth/Auth";
 import HeaderCartButton from "./HeaderCartButton";
 import logo from "../../assets/showarma-logo.jpg";
 import classes from "./Header.module.scss";
@@ -15,9 +16,18 @@ const Header = (props) => {
   let user = useSelector((state) => {
     return state.auth.user;
   });
-  console.log(user);
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      dispatch(authActions.logIn(user.email));
+    }
+  });
+  const authModalIsDisplayed = useSelector((context) => {
+    return context.auth.displayAuthModal;
+  });
   return (
     <Fragment>
+      {authModalIsDisplayed && <Auth></Auth>}
       <header className={classes.header}>
         <Link to={"/"} className={classes.logo}>
           <img src={logo}></img>
@@ -39,7 +49,7 @@ const Header = (props) => {
               return `${classes["nav-link"]}`;
             }}
           >
-            Buy Shawarma
+            Meals
           </NavLink>
         </div>
         <HeaderCartButton onClick={props.onShowCart} />
@@ -48,9 +58,10 @@ const Header = (props) => {
             {user}
           </Link>
         ) : (
-          <Button className={classes["auth-btn"]} to="/account">
-            "Log in"
-          </Button>
+          <Button
+            config={{ onClick: displayAuthModal }}
+            label="Log in"
+          ></Button>
         )}
       </header>
     </Fragment>

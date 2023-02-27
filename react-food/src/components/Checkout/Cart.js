@@ -14,32 +14,33 @@ const Cart = (props) => {
   const totalAmount = `$${amount.toFixed(2)}`;
   const hasItems = cartItemsData.length > 0;
 
-  const cartItemRemoveHandler = (id) => {
-    dispatch(cartActions.remove(id));
+  const decreaseHandler = (key) => {
+    dispatch(cartActions.updateAmount({ operation: "decrease", key: key }));
   };
-
-  const cartItemAddHandler = (item) => {
-    dispatch(cartActions.add({ ...item, amount: 1 }));
+  const increaseHandler = (key) => {
+    dispatch(cartActions.updateAmount({ operation: "increase", key: key }));
+  };
+  const deleteHandler = (key) => {
+    dispatch(cartActions.delete(key));
   };
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartItemsData.map((item) => (
         <CartItem
-          key={item.id}
+          key={item.key}
+          localId={item.key}
           name={item.name}
           amount={item.amount}
-          price={item.price}
-          onRemove={cartItemRemoveHandler.bind(null, item.id)}
-          onAdd={cartItemAddHandler.bind(null, item)}
+          price={item.finalPrice / item.amount}
+          onDelete={deleteHandler}
+          onDecrease={decreaseHandler}
+          onIncrease={increaseHandler}
         />
       ))}
     </ul>
   );
-  const orderBtnHandler = () => {
-    props.onShowCheckouHandler();
-    props.onClose();
-  };
+  const orderBtnHandler = () => {};
   return (
     <Card>
       {cartItems}
@@ -48,9 +49,6 @@ const Cart = (props) => {
         <span>{totalAmount}</span>
       </div>
       <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={props.onClose}>
-          Close
-        </button>
         {hasItems && (
           <button onClick={orderBtnHandler} className={classes.button}>
             Order

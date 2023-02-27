@@ -1,6 +1,7 @@
 import React from "react";
 import Meals from "../components/FoodList/Meals";
 import { json } from "react-router-dom";
+
 const FoodListPage = () => {
   return <Meals></Meals>;
 };
@@ -16,9 +17,11 @@ export const foodLoader = async () => {
   for (let meal in mealsData) {
     mealsArray.push({
       id: meal,
-      description: mealsData[meal].description,
+      ingredients: mealsData[meal].ingredients,
       name: mealsData[meal].name,
       price: mealsData[meal].price,
+      image: mealsData[meal].image,
+      weight: mealsData[meal].weight,
     });
   }
   return json(mealsArray);

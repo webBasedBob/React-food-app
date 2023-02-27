@@ -4,6 +4,7 @@
   margin: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
+  gap: 2rem;
 }
 
 .meal h3 {
@@ -19,4 +20,18 @@
   font-weight: bold;
   color: #ad5502;
   font-size: 1.25rem;
+  margin-top: auto;
+}
+.meal-image img {
+  height: 10rem;
+  border-radius: 10%;
+}
+.details-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.add-btn-container {
+  align-self: flex-end;
 }

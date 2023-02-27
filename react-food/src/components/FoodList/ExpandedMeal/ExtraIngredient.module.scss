@@ -1,0 +1,13 @@
+.extra-ingr {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+  gap: 2rem;
+  &__name {
+    text-transform: capitalize;
+  }
+  &__price {
+    margin-left: auto;
+    color: #8c1f38;
+  }
+}
