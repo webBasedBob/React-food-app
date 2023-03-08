@@ -3,7 +3,7 @@ import MealItem from "./MealItem/MealItem";
 import classes from "./AvailableMeals.module.css";
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { mealsActions } from "../../redux-store";
+import { mealsActions } from "../../redux-store/meals";
 import { useDispatch } from "react-redux";
 const AvailableMeals = () => {
   const fetchedMeals = useLoaderData();

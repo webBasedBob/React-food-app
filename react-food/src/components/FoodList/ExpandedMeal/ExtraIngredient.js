@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Plus, Minus } from "../../../assets/icons";
 import classes from "./ExtraIngredient.module.scss";
-import { mealsActions } from "../../../redux-store";
+import { mealsActions } from "../../../redux-store/meals";
 import AmountInput from "../../UI/AmountInput";
 const ExtraIngredient = (props) => {
   const ingredientAmount = useSelector(

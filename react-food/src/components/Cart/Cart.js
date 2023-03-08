@@ -1,17 +1,17 @@
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
-import { cartActions } from "../../redux-store/index";
+import { cartActions } from "../../redux-store/cart";
+import { checkoutActions } from "../../redux-store/checkout";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../UI/Card";
 const Cart = (props) => {
   const dispatch = useDispatch();
-  const amount = useSelector((state) => {
-    return state.cart.totalAmount;
+  const totalAmount = useSelector((state) => {
+    return `$${state.cart.totalAmount.toFixed(2)}`;
   });
   const cartItemsData = useSelector((state) => {
     return state.cart.items;
   });
-  const totalAmount = `$${amount.toFixed(2)}`;
   const hasItems = cartItemsData.length > 0;
 
   const decreaseHandler = (key) => {
@@ -22,6 +22,9 @@ const Cart = (props) => {
   };
   const deleteHandler = (key) => {
     dispatch(cartActions.delete(key));
+  };
+  const orderBtnHandler = () => {
+    dispatch(checkoutActions.displayModal());
   };
 
   const cartItems = (
@@ -40,7 +43,6 @@ const Cart = (props) => {
       ))}
     </ul>
   );
-  const orderBtnHandler = () => {};
   return (
     <Card>
       {cartItems}

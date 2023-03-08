@@ -3,11 +3,13 @@ import Input from "../UI/Input";
 import Modal from "../UI/Modal";
 import { useRef, useState, useContext } from "react";
 import InputValidation from "../UI/InputValidation";
-import CartContext from "../../store/cart-context";
+import { useSelector } from "react-redux";
 const Checkout = (props) => {
   const [evaluationNeeded, setEvaluationNeeded] = useState(false);
   const [formState, setFormState] = useState({});
-  const cartCtx = useContext(CartContext);
+  const cartCtx = useSelector((state) => {
+    return state.cart;
+  });
   let formValidity = Object.values(formState).every((elm) => {
     return elm === true;
   });

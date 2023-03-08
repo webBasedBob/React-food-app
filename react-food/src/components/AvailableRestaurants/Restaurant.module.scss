@@ -1,0 +1,46 @@
+.rating__value,
+.name {
+  text-transform: capitalize;
+  font-weight: 600;
+  color: #8a2b06;
+  font-size: 1.4rem;
+  margin: 0;
+}
+.list-item {
+  width: 100%;
+  border: 1px solid #999;
+  height: fit-content;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  &__img {
+    position: relative;
+    height: 2.4rem;
+    & img {
+      height: 2.4rem;
+      position: relative;
+      z-index: 30;
+    }
+  }
+  &__background {
+    background-color: #8a2b06;
+    height: 80%;
+    width: 98%;
+    position: absolute;
+    top: 10%;
+    left: 1px;
+    z-index: 20;
+  }
+}

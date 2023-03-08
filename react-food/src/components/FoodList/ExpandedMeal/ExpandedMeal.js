@@ -2,33 +2,26 @@ import React from "react";
 import classes from "./ExpandedMeals.module.scss";
 import Modal from "../../UI/Modal";
 import { useSelector, useDispatch } from "react-redux";
-import { mealsActions } from "../../../redux-store";
+import { mealsActions } from "../../../redux-store/meals";
 import MealItem from "../MealItem/MealItem";
-import Sauce from "./Sauce";
-import ExtraIngredient from "./ExtraIngredient";
 import Button from "../../UI/Button";
-import { Minus, Plus } from "../../../assets/icons";
 import AmountInput from "../../UI/AmountInput";
-import { cartActions } from "../../../redux-store";
+import { cartActions } from "../../../redux-store/cart";
+import SouceSelector from "./SauceSelector";
+import MealCustomizer from "./MealCustomizer";
 const ExpandedMeal = () => {
   const dispatch = useDispatch();
-  const closeExpandedMealModalHandler = () => {
-    dispatch(mealsActions.hideExpandedMeal());
-  };
+
   const targetMeal = useSelector((state) => {
     return state.meals.currentMeal;
   });
-  const sauces = useSelector((state) => state.meals.sauces);
-
-  const handleAddSauce = (sauce) => {
-    dispatch(mealsActions.addSauce(sauce));
-  };
-  const handleRemoveSauce = (sauce) => {
-    dispatch(mealsActions.removeSauce(sauce));
-  };
+  const saucesSelected = targetMeal.sauces.length;
   const amountChangeHandler = (newValue) => {
     dispatch(mealsActions.updateAmount(newValue));
     dispatch(mealsActions.updateFinalPrice());
+  };
+  const closeExpandedMealModalHandler = () => {
+    dispatch(mealsActions.hideExpandedMeal());
   };
   const addToCartHandler = () => {
     if (targetMeal.sauces.length === 0) {
@@ -37,6 +30,7 @@ const ExpandedMeal = () => {
     dispatch(cartActions.add(targetMeal));
     dispatch(mealsActions.hideExpandedMeal());
   };
+
   return (
     <Modal onClose={closeExpandedMealModalHandler}>
       <div className={classes["extra-padding"]}>
@@ -48,58 +42,28 @@ const ExpandedMeal = () => {
             description={targetMeal.description}
             price={targetMeal.price}
             image={targetMeal.image}
+            meal={targetMeal}
             showBtn={false}
             showPrice={false}
           />
         }
-        <div>
-          <h4>Pick sauces</h4>
-          <p>Choose at least 1, maximum 3</p>
-          <ul
-            className={`${classes["sauces-list"]} ${classes["list"]} ${
-              targetMeal.sauces.length > 2 ? classes["max-reached"] : ""
-            }`}
-          >
-            {sauces.map((sauce) => {
-              return (
-                <Sauce
-                  key={sauce}
-                  name={sauce}
-                  addSauce={handleAddSauce}
-                  removeSauce={handleRemoveSauce}
-                ></Sauce>
-              );
-            })}
-          </ul>
-        </div>
-        <div>
-          <h4>Customize Meal</h4>
-          <p> 0 means excluded, 1 means normal amount, 2 means extra</p>
-          {Object.entries(targetMeal.ingredients).map((entry) => {
-            if (entry[0] === "sauce") return;
-            return (
-              <ExtraIngredient
-                key={entry[0]}
-                name={entry[0]}
-                price={entry[1].price}
-              ></ExtraIngredient>
-            );
-          })}
-        </div>
-        <div className={classes["amount-wrapper"]}>
-          <AmountInput
-            changeHandler={amountChangeHandler}
-            config={{
-              min: 0,
-              max: 100,
-              step: 1,
-              value: targetMeal.amount,
-              style: {
-                textAlign: "center",
-              },
-            }}
-          ></AmountInput>
-        </div>
+        <SouceSelector selectedSauces={saucesSelected}></SouceSelector>
+        <MealCustomizer meal={targetMeal}></MealCustomizer>
+
+        <AmountInput
+          changeHandler={amountChangeHandler}
+          style={{
+            marginTop: "2rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+          config={{
+            min: 0,
+            max: 100,
+            step: 1,
+            value: targetMeal.amount,
+          }}
+        ></AmountInput>
         <Button
           className={classes["order-btn"]}
           label={`Add for $${targetMeal.finalPrice.toFixed(2)}`}
@@ -114,8 +78,3 @@ const ExpandedMeal = () => {
 };
 
 export default ExpandedMeal;
-
-// {Object.keys(targetMeal.ingredients).map((ingr) => {
-//   if (ingr === "sauce") return;
-//   return <ExtraIngredient key={ingr} name={ingr}></ExtraIngredient>;
-// })}

@@ -4,8 +4,8 @@ import Modal from "../UI/Modal";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import { connect } from "react-redux";
-import store, { authActions } from "../../redux-store";
-import { logInAction, signUpAction } from "../../redux-store";
+import store, { authActions } from "../../redux-store/auth";
+import { logInAction, signUpAction } from "../../redux-store/auth";
 class Auth extends Component {
   constructor() {
     super();

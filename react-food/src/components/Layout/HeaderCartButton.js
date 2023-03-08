@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import CartIcon from "../Checkout/CartIcon";
-import CartContext from "../../store/cart-context";
+import { Cart } from "../../assets/icons";
 import classes from "./HeaderCartButton.module.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -36,9 +35,7 @@ const HeaderCartButton = (props) => {
 
   return (
     <Link to="/checkout" className={btnClasses} onClick={props.onClick}>
-      <span className={classes.icon}>
-        <CartIcon />
-      </span>
+      <span className={classes.icon}>{Cart}</span>
       <span>Your Cart</span>
       <span className={classes.badge}>{numberOfCartItems}</span>
     </Link>

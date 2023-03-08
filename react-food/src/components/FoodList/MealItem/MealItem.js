@@ -1,9 +1,9 @@
 import classes from "./MealItem.module.css";
-import { cartActions } from "../../../redux-store";
+import { cartActions } from "../../../redux-store/cart";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../UI/Button";
 import { useLoaderData } from "react-router";
-import { mealsActions } from "../../../redux-store";
+import { mealsActions } from "../../../redux-store/meals";
 const MealItem = (props) => {
   const price = `$${props.price.toFixed(2)}`;
   const dispatch = useDispatch();

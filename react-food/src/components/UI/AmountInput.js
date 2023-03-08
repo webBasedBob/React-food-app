@@ -10,7 +10,7 @@ const AmountInput = (props) => {
     props.changeHandler(Number(inputRef.current.value) + 1);
   };
   return (
-    <div className={classes["amount"]}>
+    <div style={{ ...props.style }} className={classes["amount"]}>
       <div onClick={decreaseHandler} className={classes["amount__icon"]}>
         {Minus}
       </div>

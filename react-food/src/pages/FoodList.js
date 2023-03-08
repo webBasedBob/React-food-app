@@ -1,14 +1,18 @@
 import React from "react";
 import Meals from "../components/FoodList/Meals";
 import { json } from "react-router-dom";
-
+import store from "../redux-store";
 const FoodListPage = () => {
   return <Meals></Meals>;
 };
-
 export default FoodListPage;
 
 export const foodLoader = async () => {
+  //caching the response
+  let storedMeals = store.getState().meals.meals;
+  if (storedMeals.length) {
+    return json(storedMeals);
+  }
   let mealsResponse = await fetch(
     "https://react-course-proje-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
   );

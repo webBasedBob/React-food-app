@@ -6,8 +6,9 @@ import logo from "../../assets/showarma-logo.jpg";
 import classes from "./Header.module.scss";
 import Button from "../UI/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "../../redux-store";
+import { authActions } from "../../redux-store/auth";
 import { Link, NavLink } from "react-router-dom";
+import HeaderLink from "./HeaderLink";
 const Header = (props) => {
   const dispatch = useDispatch();
   const displayAuthModal = () => {
@@ -25,6 +26,11 @@ const Header = (props) => {
   const authModalIsDisplayed = useSelector((context) => {
     return context.auth.displayAuthModal;
   });
+  const HeaderLinkClass = ({ isActive }) => {
+    console.log("cpl");
+    if (isActive) return `${classes["nav-link"]} ${classes.active}`;
+    return `${classes["nav-link"]}`;
+  };
   return (
     <Fragment>
       {authModalIsDisplayed && <Auth></Auth>}
@@ -33,24 +39,12 @@ const Header = (props) => {
           <img src={logo}></img>
         </Link>
         <div className={classes["nav-links"]}>
-          <NavLink
-            to="/"
-            className={({ isActive }) => {
-              if (isActive) return `${classes["nav-link"]} ${classes.active}`;
-              return `${classes["nav-link"]}`;
-            }}
-          >
+          <HeaderLink config={{ to: "/", className: HeaderLinkClass }}>
             Home
-          </NavLink>
-          <NavLink
-            to="/food"
-            className={({ isActive }) => {
-              if (isActive) return `${classes["nav-link"]} ${classes.active}`;
-              return `${classes["nav-link"]}`;
-            }}
-          >
+          </HeaderLink>
+          <HeaderLink config={{ to: "/food", className: HeaderLinkClass }}>
             Meals
-          </NavLink>
+          </HeaderLink>
         </div>
         <HeaderCartButton onClick={props.onShowCart} />
         {user ? (

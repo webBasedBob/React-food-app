@@ -7,7 +7,7 @@ import FoodDetailsPage from "../pages/FoodDetails";
 import DeliveryStatusPage from "../pages/DeliveryStatus";
 import AccountPage from "../pages/Account";
 import EntertainmentPage from "../pages/Entertainment";
-const Router = () => {
+const Router = (props) => {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -45,6 +45,6 @@ const Router = () => {
       ],
     },
   ]);
-  return <RouterProvider router={router}></RouterProvider>;
+  return <RouterProvider router={router}>{props.children}</RouterProvider>;
 };
 export default Router;
