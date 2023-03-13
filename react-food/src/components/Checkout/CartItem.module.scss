@@ -1,0 +1,32 @@
+@use "../../styles/confing.scss" as config;
+
+p {
+  margin: 0;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  @include config.box-shadow-light;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.img {
+  @include config.color-gradient-linear;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 100000px;
+  padding: 3px;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+}
+.name {
+}
+.quantity {
+}
+.price {
+  margin-left: auto;
+}

@@ -27,13 +27,12 @@ const Header = (props) => {
     return context.auth.displayAuthModal;
   });
   const HeaderLinkClass = ({ isActive }) => {
-    console.log("cpl");
     if (isActive) return `${classes["nav-link"]} ${classes.active}`;
     return `${classes["nav-link"]}`;
   };
   return (
     <Fragment>
-      {authModalIsDisplayed && <Auth></Auth>}
+      <Auth display={authModalIsDisplayed}></Auth>
       <header className={classes.header}>
         <Link to={"/"} className={classes.logo}>
           <img src={logo}></img>
@@ -45,15 +44,19 @@ const Header = (props) => {
           <HeaderLink config={{ to: "/food", className: HeaderLinkClass }}>
             Meals
           </HeaderLink>
+          <HeaderLink config={{ to: "/checkout", className: HeaderLinkClass }}>
+            Cart
+          </HeaderLink>
         </div>
-        <HeaderCartButton onClick={props.onShowCart} />
+        {/* <HeaderCartButton onClick={props.onShowCart} /> */}
         {user ? (
-          <Link className={classes["auth-btn"]} to="/account">
+          <Link className={HeaderLinkClass} to="/account">
             {user}
           </Link>
         ) : (
           <Button
-            config={{ onClick: displayAuthModal }}
+            className={classes["auth-btn"]}
+            config={{ onClick: displayAuthModal, type: "button" }}
             label="Log in"
           ></Button>
         )}

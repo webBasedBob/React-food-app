@@ -26,7 +26,6 @@ class Auth extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    console.log(this.props);
     if (this.state["auth-method-login"]) {
       this.props.logIn(userCredentials);
     }
@@ -43,7 +42,7 @@ class Auth extends Component {
 
   render() {
     return (
-      <Modal onClose={this.props.closeAuthModal}>
+      <Modal display={this.props.display} onClose={this.props.closeAuthModal}>
         <form
           onSubmit={this.submitHandler.bind(this)}
           className={classes.container}

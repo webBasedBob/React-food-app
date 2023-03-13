@@ -1,16 +1,20 @@
+@use "../../styles/confing.scss" as config;
+
 .button {
   font: inherit;
   cursor: pointer;
-  background-color: #8a2b06;
-  border: 1px solid #8a2b06;
-  color: white;
+  background-image: none;
+  background-color: config.$color-button-primary;
+  @include config.color-gradient-main;
+  border: none;
+  color: config.$color-main;
   padding: 0.25rem 2rem;
   border-radius: 20px;
   font-weight: bold;
-  // margin: 1rem 0;
+  transition: all 0.2s;
   &:hover,
   &:active {
-    background-color: #641e03;
-    border-color: #641e03;
+    @include config.color-gradient-main-hover;
+    color: #fff;
   }
 }

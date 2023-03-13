@@ -1,0 +1,31 @@
+.enter {
+}
+.active-enter {
+  animation: fade-in 1s ease-out;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+.done-enter {
+}
+.exit {
+}
+.active-exit {
+  animation: fade-out 1s ease-out;
+}
+.done-exit {
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}

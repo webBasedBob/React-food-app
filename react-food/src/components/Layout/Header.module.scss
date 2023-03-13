@@ -1,11 +1,12 @@
+@use "../../styles/confing.scss" as config;
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 5rem;
-  background-color: #8a2b06;
-  color: white;
+  background-color: config.$color-light-orange;
+  // @include config.color-gradient-main;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,18 +43,23 @@
 
 .auth-btn {
   text-decoration: none;
-  color: inherit;
+  color: config.$color-main;
   font: inherit;
-  font-weight: inherit;
-  font-size: inherit;
+  font-weight: 700;
+  font-size: 1.2rem;
+  background-color: transparent;
+  padding: 5px 2rem;
+  border: 1px solid config.$color-main;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .nav-link {
   text-decoration: none;
-  color: inherit;
+  color: config.$color-main;
   font: inherit;
-  font-weight: inherit;
-  font-size: inherit;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 .nav-link.active {
   text-decoration: underline;

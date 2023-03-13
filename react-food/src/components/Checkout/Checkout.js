@@ -1,126 +1,75 @@
-import classes from "./Checkout.module.css";
-import Input from "../UI/Input";
+import React from "react";
+import classes from "./Checkout.module.scss";
 import Modal from "../UI/Modal";
-import { useRef, useState, useContext } from "react";
-import InputValidation from "../UI/InputValidation";
 import { useSelector } from "react-redux";
+import CartItem from "./CartItem";
+import Info from "./Info";
+import Button from "../UI/Button";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../redux-store/cart";
+import { checkoutActions } from "../../redux-store/checkout";
+import { googleMapActions } from "../../redux-store/googleMap";
+import { restaurantsActions } from "../../redux-store/restaurants";
 const Checkout = (props) => {
-  const [evaluationNeeded, setEvaluationNeeded] = useState(false);
-  const [formState, setFormState] = useState({});
-  const cartCtx = useSelector((state) => {
-    return state.cart;
-  });
-  let formValidity = Object.values(formState).every((elm) => {
-    return elm === true;
-  });
-  const nameRef = useRef();
-  const streetRef = useRef();
-  const postalRef = useRef();
-  const cityRef = useRef();
-
-  const confirmHandler = (event) => {
-    event.preventDefault();
-    if (!formValidity) {
-      setEvaluationNeeded(true);
-    } else {
-      const transformedCartData = {};
-      cartCtx.items.forEach((item) => {
-        transformedCartData[item.id] = {
-          name: item.name,
-          amount: item.amount,
-          price: item.price,
-        };
-      });
-      const orderData = {
-        userInfo: {
-          name: nameRef.current.value,
-          street: streetRef.current.value,
-          postalCode: postalRef.current.value,
-          city: cityRef.current.value,
-        },
-        cartInfo: { ...transformedCartData },
-        finalPrice: cartCtx.totalAmount,
-      };
-      fetch(
-        "https://react-course-proje-default-rtdb.europe-west1.firebasedatabase.app/orders.json",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(orderData),
-        }
-      );
-      props.onCancel();
-    }
+  //i tkink i whould combine state slices to avoid code like this, it's probably a sign that those slices belong together
+  const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cart.items);
+  const address = useSelector((state) => state.googleMap.address);
+  const restaurant = useSelector((state) => state.restaurants.chosenRestaurant);
+  const user = useSelector((state) => state.auth.user);
+  const finalPrice = useSelector((state) => state.cart.totalAmount);
+  const dispatch = useDispatch();
+  const createOrderObj = () => {
+    const orderObj = {
+      username: user?.name,
+      items: [...cartItems],
+      total: finalPrice,
+      address: address,
+      restaurant: restaurant,
+    };
+    return orderObj;
   };
-
-  let inputValidityCHangeHandler = (id, validity) => {
-    setFormState((prevState) => {
-      return { ...prevState, [id]: validity };
-    });
+  const handleConfirmOrder = () => {
+    dispatch(checkoutActions.setFinalOrder(createOrderObj()));
+    dispatch(checkoutActions.resetState());
+    dispatch(googleMapActions.resetState());
+    dispatch(restaurantsActions.resetState());
+    navigate("/delivery-status");
   };
 
   return (
-    <Modal onClose={props.onClose}>
-      <form
-        autoComplete="new-pula"
-        className={classes.form}
-        onSubmit={confirmHandler}
-      >
-        <InputValidation
-          ref={nameRef}
-          validatingFn={(inputStr) => {
-            return inputStr.trim().length > 0;
-          }}
-          onValidityChange={inputValidityCHangeHandler}
-          evaluationNeeded={evaluationNeeded}
-          className={classes.control}
-          label="Your Name"
-          input={{
-            id: "name",
-            type: "text",
-            autoComplete: "new-pula",
-          }}
-        ></InputValidation>
-        <InputValidation
-          ref={streetRef}
-          validatingFn={(inputStr) => {
-            return inputStr.trim().length > 0;
-          }}
-          onValidityChange={inputValidityCHangeHandler}
-          evaluationNeeded={evaluationNeeded}
-          className={classes.control}
-          label="Street"
-          input={{ id: "street", type: "text", autoComplete: "new-pula" }}
-        ></InputValidation>
-        <InputValidation
-          ref={postalRef}
-          validatingFn={(inputStr) => {
-            return inputStr.trim().length > 0;
-          }}
-          onValidityChange={inputValidityCHangeHandler}
-          evaluationNeeded={evaluationNeeded}
-          className={classes.control}
-          label="Postal Code"
-          input={{ id: "postal", type: "text" }}
-        ></InputValidation>
-        <InputValidation
-          ref={cityRef}
-          validatingFn={(inputStr) => {
-            return inputStr.trim().length > 0;
-          }}
-          onValidityChange={inputValidityCHangeHandler}
-          evaluationNeeded={evaluationNeeded}
-          className={classes.control}
-          label="City"
-          input={{ id: "city", type: "text", autoComplete: "new-pula" }}
-        ></InputValidation>
-        <div className={classes.actions}>
-          <button type="button" onClick={props.onCancel}>
-            Cancel
-          </button>
-          <button className={classes.submit}>Confirm</button>
+    <Modal onClose={props.onClose} display={props.display}>
+      <div className={classes.wrapper}>
+        <div className={classes.cart}>
+          {cartItems.map((item) => {
+            return (
+              <CartItem
+                key={item.id}
+                name={item.name}
+                price={item.finalPrice}
+                quantity={item.amount}
+                image={item.image}
+              ></CartItem>
+            );
+          })}
         </div>
-      </form>
+        <div className={classes["personal-info"]}>
+          <Info label="Name:" data={user?.name}></Info>
+          <Info label="Address:" data={address}></Info>
+          <Info label="Delivered by:" data={restaurant}></Info>
+        </div>
+        <div className={classes["final-price"]}>
+          <Info label="Total" data={`$${finalPrice.toFixed(2)}`}></Info>
+        </div>
+        <div className={classes.actions}>
+          <Button config={{ onClick: props.onClose }} label="Cancel"></Button>
+          <Button
+            config={{ onClick: handleConfirmOrder }}
+            label="Confirm"
+          ></Button>
+        </div>
+      </div>
     </Modal>
   );
 };

@@ -1,3 +1,4 @@
+@use "../../../styles/confing.scss" as config;
 .extra-ingr {
   display: flex;
   justify-content: space-between;
@@ -8,6 +9,6 @@
   }
   &__price {
     margin-left: auto;
-    color: #8c1f38;
+    color: config.$color-main;
   }
 }

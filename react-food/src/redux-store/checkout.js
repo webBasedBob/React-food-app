@@ -17,6 +17,12 @@ export const checkoutSlice = createSlice({
     hideModal(state, action) {
       state.checkoutModalIsVisible = false;
     },
+    resetState(state, action) {
+      state.checkoutModalIsVisible = false;
+    },
+    setFinalOrder(state, action) {
+      state.finalOrder = action.payload;
+    },
   },
 });
 export const checkoutActions = checkoutSlice.actions;

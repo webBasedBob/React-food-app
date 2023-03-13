@@ -15,11 +15,19 @@ export const restaurantsSlice = createSlice({
     storeRestaurants(state, action) {
       state.restaurants = action.payload;
     },
+    setChosenRestaurant(state, action) {
+      state.chosenRestaurant = action.payload;
+    },
     hideModal(state, action) {
       state.modalIsVisible = false;
     },
     showModal(state, action) {
       state.modalIsVisible = true;
+    },
+    resetState(state, action) {
+      state.restaurants = [];
+      state.modalIsVisible = false;
+      state.chosenRestaurant = null;
     },
   },
 });

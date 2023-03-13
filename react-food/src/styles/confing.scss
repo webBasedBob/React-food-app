@@ -1,0 +1,51 @@
+$color-main: #8f1c08;
+$color-dark-orange: #f54b07;
+$color-light-orange: #fea909;
+$color-red: #f60308;
+$color-shawarma: #be782d;
+
+//color scheme
+$color-box-background: #fff;
+// $color-button-primary: #e9255c;
+// $color-button-primary: #b73b8a;
+// $color-button-primary: #744e95;
+$color-button-primary: #4d1601;
+
+//text colors
+$color-text-brown-1: #4d1601;
+$color-text-brown-2: #4d1601;
+@mixin box-shadow-light {
+  box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.137);
+}
+@mixin color-gradient-main {
+  // background: linear-gradient($color-dark-orange, $color-light-orange);
+  background: radial-gradient(
+    circle,
+    #fea909,
+    #fd9400,
+    #fb7e00,
+    #f96600,
+    #f54b07
+  );
+}
+@mixin color-gradient-linear {
+  background: linear-gradient(
+    to left top,
+    #f54b07,
+    #f96600,
+    #fb7e00,
+    #fd9400,
+    #fea909
+  );
+}
+@mixin color-gradient-main-hover {
+  background: radial-gradient(
+    circle,
+    #f54b07,
+    #f96600,
+    #fb7e00,
+    #fd9400,
+    #fea909
+  );
+  // background: linear-gradient(#f65d20, #feb222);
+}

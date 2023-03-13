@@ -17,7 +17,7 @@ const AddressForm = () => {
     dispatch(getCoordsFromAddress(locationFieldRef.current.value));
   }, 700);
   return (
-    <Card>
+    <div>
       <Input
         input={{
           id: "location-search",
@@ -40,8 +40,8 @@ const AddressForm = () => {
           approximate
         </p>
       </div>
-      <Button label="Place Order"></Button>
-    </Card>
+      <Button config={{ type: "submit" }} label="Find restaurants"></Button>
+    </div>
   );
 };
 export default AddressForm;

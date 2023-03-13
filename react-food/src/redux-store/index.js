@@ -18,9 +18,9 @@ const store = configureStore({
     cart: cartStore.reducer,
     meals: mealsSlice.reducer,
     checkout: checkoutSlice.reducer,
-    entertainment: entertainmentSlice.reducer,
     googleMap: googleMapSlice.reducer,
     restaurants: restaurantsSlice.reducer,
+    entertainment: entertainmentSlice.reducer,
   },
 });
 

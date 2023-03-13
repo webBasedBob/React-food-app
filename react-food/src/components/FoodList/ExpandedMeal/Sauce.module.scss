@@ -1,3 +1,5 @@
+@use "../../../styles/confing.scss" as config;
+
 .sauce-name {
   padding: 0;
   margin: 0;
@@ -13,7 +15,7 @@
 }
 .list-row.inactive .icon:hover {
   background-color: #fff;
-  color: #8c1f38;
+  color: config.$color-main;
 }
 .list-row.inactive .icon {
   cursor: default;
@@ -27,20 +29,20 @@
 }
 .icon.plus {
   background-color: #fff;
-  color: #8c1f38;
+  color: config.$color-main;
   &:hover {
     background-color: #8c1f3852;
-    color: #8c1f38;
+    color: config.$color-main;
   }
 }
 .icon.checkmark {
-  background-color: #8c1f38;
+  background-color: config.$color-main;
   color: #fff;
   & svg {
     transform: scale(0.7);
   }
   &:hover {
-    background-color: #8c1f38;
+    background-color: config.$color-main;
     color: #fff;
   }
 }

@@ -23,7 +23,7 @@ const containerStyle = {
   borderRadius: "10px",
   zIndex: 1000,
 };
-const Map = () => {
+const Map = (props) => {
   const dispatch = useDispatch();
   const mapState = useSelector((state) => state.googleMap);
   const mapClickHandler = (e) => {
@@ -55,25 +55,23 @@ const Map = () => {
     };
     dispatch(googleMapActions.setBounds(bounds));
   };
-  const handleClickPula = async () => {
-    let restaurants = await getRestaurants(
-      mapState.markerPosition,
-      mapObj,
-      mapState
-    );
-    dispatch(restaurantsActions.storeRestaurants(restaurants));
-    dispatch(restaurantsActions.showModal());
-  };
+  useEffect(() => {
+    if (!props.shouldExecuteSearch) return;
+    const handleClickPula = async () => {
+      let restaurants = await getRestaurants(
+        mapState.markerPosition,
+        mapObj,
+        mapState
+      );
+      dispatch(restaurantsActions.storeRestaurants(restaurants));
+      dispatch(restaurantsActions.showModal());
+    };
+    handleClickPula();
+  }, [props.shouldExecuteSearch]);
 
   return (
     <>
       <div onDoubleClick={resetBounds}>
-        <Button
-          label="press"
-          config={{
-            onClick: handleClickPula,
-          }}
-        ></Button>
         <LoadScript libraries={libraries} googleMapsApiKey={mapState.API_KEY}>
           <GoogleMap
             onClick={mapClickHandler}

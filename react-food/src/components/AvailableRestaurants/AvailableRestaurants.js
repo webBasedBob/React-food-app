@@ -4,7 +4,8 @@ import Restaurant from "./Restaurant";
 import Modal from "../UI/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { restaurantsActions } from "../../redux-store/restaurants";
-const AvailableRestaurants = () => {
+import { checkoutActions } from "../../redux-store/checkout";
+const AvailableRestaurants = (props) => {
   const dispatch = useDispatch();
   const availableRestaurants = useSelector(
     (state) => state.restaurants.restaurants
@@ -19,11 +20,17 @@ const AvailableRestaurants = () => {
   const closeModal = () => {
     dispatch(restaurantsActions.hideModal());
   };
+  const handleRestaurantClick = (restaurantName) => {
+    dispatch(restaurantsActions.setChosenRestaurant(restaurantName));
+    dispatch(checkoutActions.displayModal());
+    closeModal();
+  };
   return (
-    <Modal onClose={closeModal}>
+    <Modal display={props.display} onClose={closeModal}>
       {sortedRestaurantsArr.map((restaurant) => {
         return (
           <Restaurant
+            onClick={handleRestaurantClick}
             key={restaurant.placeId}
             name={restaurant.name}
             rating={restaurant.rating.toFixed(1)}

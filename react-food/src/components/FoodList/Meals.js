@@ -2,6 +2,9 @@ import { Fragment } from "react";
 import AvailableMeals from "./AvailableMeals";
 import { useSelector } from "react-redux";
 import ExpandedMeal from "./ExpandedMeal/ExpandedMeal";
+import { CSSTransition } from "react-transition-group";
+// import classes from "./Meals.module.scss";
+
 const Meals = () => {
   const expandedMealIsShown = useSelector((state) => {
     return state.meals.expandedMealIsShown;
@@ -9,7 +12,7 @@ const Meals = () => {
   return (
     <Fragment>
       <AvailableMeals />
-      {expandedMealIsShown && <ExpandedMeal></ExpandedMeal>}
+      <ExpandedMeal display={expandedMealIsShown}></ExpandedMeal>
     </Fragment>
   );
 };

@@ -27,6 +27,7 @@ export const getAddressFromCoords = createAsyncThunk(
       // return jsonResponse.results[0].formatted_address;
     } catch (err) {
       //with null returned, the component containing this data will not be rendered
+      console.log(err);
       return null;
     }
   }
@@ -46,7 +47,6 @@ export const getBoundsFromAddress = createAsyncThunk(
         south: jsonResponse.results[0].geometry.viewport.southwest.lat,
         west: jsonResponse.results[0].geometry.viewport.southwest.lng,
       };
-      console.log("oula", bounds);
       return bounds;
     } catch (err) {
       return;
@@ -100,6 +100,7 @@ export const googleMapSlice = createSlice({
       west: -90,
     },
     city: null,
+    modalIsShown: false,
   },
   reducers: {
     setLocationCoords(state, action) {
@@ -120,6 +121,26 @@ export const googleMapSlice = createSlice({
 
     setBounds(state, action) {
       state.bounds = action.payload;
+    },
+    displayModal(state, action) {
+      state.modalIsShown = true;
+    },
+    hideModal(state, action) {
+      state.modalIsShown = false;
+    },
+    resetState(state, action) {
+      state.locationCoords = { lat: 0, lng: 0 };
+      state.locationType = "global";
+      state.address = null;
+      state.markerPosition = { lat: 0, lng: 0 };
+      state.bounds = {
+        east: 90,
+        north: 90,
+        south: -90,
+        west: -90,
+      };
+      state.city = null;
+      state.modalIsShown = false;
     },
   },
   extraReducers: (builder) => {

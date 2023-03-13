@@ -1,6 +1,18 @@
 import React from "react";
-
+import EntertainmentPicker from "../components/EntertainmentPicker/EntertainmentPicker";
+import { useSelector } from "react-redux";
+import YoutubePlayer from "../components/YoutubePlayer/YoutubePlayer";
+import classes from "./Root.module.scss";
 const EntertainmentPage = () => {
-  return <h2>What kind of show should we put on for you today?</h2>;
+  const youtubePlayerIsDisplayed = useSelector(
+    (state) => state.entertainment.playerIsDisplayed
+  );
+  return <div className={classes.pula}></div>;
+  return (
+    <>
+      <EntertainmentPicker></EntertainmentPicker>
+      {false && <YoutubePlayer></YoutubePlayer>}
+    </>
+  );
 };
 export default EntertainmentPage;

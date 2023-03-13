@@ -7,7 +7,12 @@ const Restaurant = (props) => {
   const ratingColorStyle = { width: `${ratingInPercentage}%` };
 
   return (
-    <div className={classes["list-item"]}>
+    <div
+      onClick={() => {
+        props.onClick(props.name);
+      }}
+      className={classes["list-item"]}
+    >
       <p className={classes.name}>{props.name}</p>
       <div className={classes.rating}>
         <p className={classes[`rating__value`]}>{props.rating}</p>

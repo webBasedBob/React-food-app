@@ -1,8 +1,9 @@
 import React from "react";
 import ExtraIngredient from "./ExtraIngredient";
+import classes from "./MealCustomizer.module.scss";
 const MealCustomizer = (props) => {
   return (
-    <div>
+    <div className={classes.container}>
       <h4>Customize Meal</h4>
       <p> 0 means excluded, 1 means normal amount, 2 means extra</p>
       {Object.entries(props.meal.ingredients).map((entry) => {

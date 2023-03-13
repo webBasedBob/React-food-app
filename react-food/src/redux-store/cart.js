@@ -79,6 +79,10 @@ export const cartStore = createSlice({
         return item.key !== action.payload;
       });
     },
+    resetState(state, action) {
+      state.items = [];
+      state.totalAmount = 0;
+    },
   },
 });
 

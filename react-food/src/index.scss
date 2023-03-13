@@ -1,3 +1,4 @@
+@use "./styles/confing.scss" as config;
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
 
 * {
@@ -6,9 +7,10 @@
 
 html {
   font-family: "Noto Sans JP", sans-serif;
+  min-height: 100vh;
+  @include config.color-gradient-main;
 }
 
 body {
   margin: 0;
-  background-color: #3f3f3f;
 }

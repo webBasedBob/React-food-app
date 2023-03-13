@@ -1,9 +1,11 @@
 import CartItem from "./CartItem";
-import classes from "./Cart.module.css";
+import classes from "./Cart.module.scss";
 import { cartActions } from "../../redux-store/cart";
 import { checkoutActions } from "../../redux-store/checkout";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../UI/Card";
+import Button from "../UI/Button";
+import { googleMapActions } from "../../redux-store/googleMap";
 const Cart = (props) => {
   const dispatch = useDispatch();
   const totalAmount = useSelector((state) => {
@@ -24,7 +26,7 @@ const Cart = (props) => {
     dispatch(cartActions.delete(key));
   };
   const orderBtnHandler = () => {
-    dispatch(checkoutActions.displayModal());
+    dispatch(googleMapActions.displayModal());
   };
 
   const cartItems = (
@@ -52,9 +54,10 @@ const Cart = (props) => {
       </div>
       <div className={classes.actions}>
         {hasItems && (
-          <button onClick={orderBtnHandler} className={classes.button}>
-            Order
-          </button>
+          <Button
+            label="Pick address"
+            config={{ onClick: orderBtnHandler }}
+          ></Button>
         )}
       </div>
     </Card>

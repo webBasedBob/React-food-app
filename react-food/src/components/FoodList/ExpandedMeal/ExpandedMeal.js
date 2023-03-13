@@ -9,13 +9,13 @@ import AmountInput from "../../UI/AmountInput";
 import { cartActions } from "../../../redux-store/cart";
 import SouceSelector from "./SauceSelector";
 import MealCustomizer from "./MealCustomizer";
-const ExpandedMeal = () => {
+const ExpandedMeal = (props) => {
   const dispatch = useDispatch();
 
   const targetMeal = useSelector((state) => {
     return state.meals.currentMeal;
   });
-  const saucesSelected = targetMeal.sauces.length;
+  const saucesSelected = targetMeal?.sauces?.length;
   const amountChangeHandler = (newValue) => {
     dispatch(mealsActions.updateAmount(newValue));
     dispatch(mealsActions.updateFinalPrice());
@@ -32,7 +32,7 @@ const ExpandedMeal = () => {
   };
 
   return (
-    <Modal onClose={closeExpandedMealModalHandler}>
+    <Modal display={props.display} onClose={closeExpandedMealModalHandler}>
       <div className={classes["extra-padding"]}>
         {
           <MealItem
@@ -66,7 +66,7 @@ const ExpandedMeal = () => {
         ></AmountInput>
         <Button
           className={classes["order-btn"]}
-          label={`Add for $${targetMeal.finalPrice.toFixed(2)}`}
+          label={`Add for $${targetMeal.finalPrice?.toFixed(2)}`}
           config={{
             onClick: addToCartHandler,
             style: { width: "100%", marginTop: "2rem" },

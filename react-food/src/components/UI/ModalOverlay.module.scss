@@ -1,0 +1,80 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(50px);
+  width: 90%;
+  max-width: 40rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 10000;
+  max-height: 40rem;
+  overflow: scroll;
+  transition: all 500ms;
+  opacity: 0;
+}
+.modal::-webkit-scrollbar {
+  display: none;
+}
+// .backdrop {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100vh;
+//   z-index: 20;
+//   background-color: rgba(0, 0, 0, 0.75);
+//   z-index: 10000;
+//   // animation: fade-in 1s ease-out;
+//   opacity: 1;
+// }
+.init {
+  // animation: fade-in 1s ease-out;
+}
+.active-appear {
+  // animation: fade-in 1s ease-out;
+}
+.done-appear {
+  // animation: fade-in 1s ease-out;
+}
+
+.enter {
+}
+.active-enter {
+  transform: translate(-50%, -50%) translateY(0px);
+  opacity: 0;
+  opacity: 1;
+}
+.done-enter {
+  transform: translate(-50%, -50%) translateY(0px);
+  opacity: 0;
+  opacity: 1;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+.exit {
+  // opacity: 1;
+}
+.active-exit {
+  // animation: fade-out 500ms ease-out;
+}
+.done-exit {
+  // opacity: 0;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}

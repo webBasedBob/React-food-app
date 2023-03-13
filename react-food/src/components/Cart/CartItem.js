@@ -1,5 +1,5 @@
 import { Minus, Plus, TrashBin } from "../../assets/icons";
-import classes from "./CartItem.module.css";
+import classes from "./CartItem.module.scss";
 
 const CartItem = (props) => {
   const price = `$${props.price.toFixed(2)}`;
