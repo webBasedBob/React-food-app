@@ -1,0 +1,38 @@
+.tv {
+  margin: 6rem auto 0 auto;
+  height: 85vh;
+  max-width: 70rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.screen {
+  width: 95%;
+  height: 90%;
+  background-color: #333;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+.stand {
+  display: inline-block;
+  height: 10%;
+  // height: 10vh;
+  width: 50vw;
+  background-color: #333;
+  clip-path: polygon(
+    41% 0%,
+    40% 50%,
+    5% 60%,
+    0% 100%,
+    100% 100%,
+    95% 60%,
+    61% 50%,
+    60% 0%
+  );
+
+  transition: all 1s;
+}

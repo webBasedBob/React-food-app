@@ -4,6 +4,8 @@ import { entertainmentActions } from "../../redux-store/entertainment";
 import EntertainmentCategory from "./EntertainmentCategory";
 import classes from "./EntertainmentPicker.module.scss";
 import { getVideos } from "../../redux-store/entertainment";
+import Card from "../UI/Card";
+
 const EntertainmentPicker = () => {
   const dispatch = useDispatch();
 
@@ -50,7 +52,7 @@ const EntertainmentPicker = () => {
       id: "/m/027x7n",
       subCategories: {},
     },
-    technology: {
+    tech: {
       id: "/m/07c1v",
       subCategories: {},
     },
@@ -78,7 +80,7 @@ const EntertainmentPicker = () => {
       id: "/m/05qt0",
       subCategories: {},
     },
-    knowledge: {
+    education: {
       id: "/m/01k8wb",
       subCategories: {},
     },
@@ -88,24 +90,29 @@ const EntertainmentPicker = () => {
     const solvedCategoryId = categoriesObj[category].id;
     setCategoryId(solvedCategoryId);
   };
-  const search = () => {
-    dispatch(getVideos(categoryId));
+  const handleSearch = (category) => {
+    const solvedCategoryId = categoriesObj[category].id;
+    dispatch(getVideos(solvedCategoryId));
   };
   return (
-    <>
-      <div className={classes.categories}>
+    <Card>
+      <div className={classes["circle-container"]}>
         {Object.keys(categoriesObj).map((categ) => {
           return (
             <EntertainmentCategory
               selectCategory={selectCategory}
               key={categ}
               name={categ}
+              handleSearch={handleSearch}
             ></EntertainmentCategory>
           );
         })}
+        <div className={classes["inner-text"]}>
+          <p>Pick a category</p>
+        </div>
       </div>
-      <button onClick={search}>Finish</button>
-    </>
+      {/* <button  onClick={search}>Finish</button> */}
+    </Card>
   );
 };
 

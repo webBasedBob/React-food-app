@@ -2,12 +2,12 @@ import React from "react";
 import classes from "./EntertainmentCategory.module.scss";
 
 const EntertainmentCategory = (props) => {
-  const selectCategory = () => {
-    props.selectCategory(props.name);
+  const handleSearch = () => {
+    props.handleSearch(props.name);
   };
 
   return (
-    <button onClick={selectCategory} className={classes.category}>
+    <button onClick={handleSearch} className={classes.category}>
       {props.name}
     </button>
   );

@@ -1,0 +1,92 @@
+@use "../../styles/confing.scss" as config;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.image {
+  display: inline-block;
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  background-color: #fea80986;
+  & img {
+    height: 10rem;
+    width: 10rem;
+    object-fit: contain;
+    position: relative;
+    z-index: 5;
+    animation: fly 3s infinite;
+  }
+  &::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fea8092d;
+    z-index: 50;
+  }
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+.status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 20rem;
+}
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+  color: config.$color-main;
+}
+.icon {
+  height: 2rem;
+  width: 2rem;
+  background-color: config.$color-main;
+  border-radius: 50%;
+  padding: 5px;
+  color: #fff;
+}
+.status-row__line {
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.line {
+  height: 1rem;
+  width: 5px;
+  background-color: config.$color-main;
+  transform: scale(1.1);
+}
+.text__step-name {
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+.text__timestamp {
+  margin: 0;
+  padding: 0;
+}

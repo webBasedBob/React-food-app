@@ -49,7 +49,7 @@ const Header = (props) => {
           </HeaderLink>
         </div>
         {/* <HeaderCartButton onClick={props.onShowCart} /> */}
-        {user ? (
+        {/* {user ? (
           <Link className={HeaderLinkClass} to="/account">
             {user}
           </Link>
@@ -59,7 +59,7 @@ const Header = (props) => {
             config={{ onClick: displayAuthModal, type: "button" }}
             label="Log in"
           ></Button>
-        )}
+        )} */}
       </header>
     </Fragment>
   );
