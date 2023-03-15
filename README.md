@@ -15,14 +15,14 @@ An app created from my love for two things, Shawarma and entertainment.
 
 # Introduction
 
-A(nother) food delivery app dedicated to Shawarma. The users select the shawarma, then they select an restaurant close to them to deliver it (I embbeded a map from Google Maps API the user can interact with, and from the coordinates provided by the user, a few more API calls are made to convert them into an address and to get Shawarma restaurants close to the location).
-During the delivery and after the delyvery has succeeded, the users can watch some random videos based on a category the users selected.
+A(nother) food delivery app dedicated to Shawarma. The users select the shawarma, then they select an restaurant close to them to deliver it (I embedded a map from Google Maps API the user can interact with, and from the coordinates provided by the user, a few more API calls are made to convert them into an address and to get Shawarma restaurants close to the location).
+During the delivery and after the delivery has succeeded, the users can watch some random videos based on a category the users selected.
 
 # Tech Stack
 
 -React
 -Redux
--Reac Router
+-React Router
 -SASS
 -WebPack
 -React testing library
@@ -30,7 +30,7 @@ During the delivery and after the delyvery has succeeded, the users can watch so
 # Walk Through
 
 You can check the app's pages walk-through down below:
-(Recruiter and Admin pages are not avalable in the live version for basic users, you can check them here)
+(Recruiter and Admin pages are not available in the live version for basic users, you can check them here)
 
 Project's pages walkthrough:
 
@@ -47,12 +47,12 @@ Project's pages walkthrough:
 The cart with cart items. If the cart contains items, the users are able to complete the ordering process, which incudes:
  - searching for locations and mark on a map the location of delivery (the map is provided by Google maps API)
  - selecting a restaurant close to the location provided beforehand (used some more Google APIs for this one)
- - checking the order summary with all the relevand data one more time and confirming it
+ - checking the order summary with all the relevant data one more time and confirming it
 
 #### [Entertainment](https://react-course-proje.web.app/entertainment)
 
 Here the users can watch youtube videos while eating.
-They select one category of videos they want to watch (eg. humour, sports, politics) and then watch them without leaving the app.
+They select one category of videos they want to watch (e.g. humor, sports, politics) and then watch them without leaving the app.
 For this feature I used the Youtube Data API v3, on top of which react-youtube library was created.
 
 # Setup
