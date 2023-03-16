@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./ModalOverlay.module.scss";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
-const portalElement = document.getElementById("overlays");
 
 const ModalOverlay = (props) => {
   return ReactDOM.createPortal(
@@ -27,7 +26,7 @@ const ModalOverlay = (props) => {
         <div>{props.children}</div>
       </div>
     </CSSTransition>,
-    portalElement
+    props.root
   );
 };
 

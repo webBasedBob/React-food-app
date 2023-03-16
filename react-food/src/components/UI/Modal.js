@@ -9,8 +9,14 @@ const portalElement = document.getElementById("overlays");
 const Modal = (props) => {
   return (
     <Fragment>
-      <Backdrop onClose={props.onClose} display={props.display}></Backdrop>
-      <ModalOverlay display={props.display}>{props.children}</ModalOverlay>
+      <Backdrop
+        root={portalElement}
+        onClose={props.onClose}
+        display={props.display}
+      ></Backdrop>
+      <ModalOverlay root={portalElement} display={props.display}>
+        {props.children}
+      </ModalOverlay>
     </Fragment>
   );
 };

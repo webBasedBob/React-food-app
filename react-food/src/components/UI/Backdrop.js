@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Backdrop.module.scss";
 import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
-const portalElement = document.getElementById("overlays");
+
 
 const Backdrop = (props) => {
   return (
@@ -27,7 +27,7 @@ const Backdrop = (props) => {
         >
           <div className={classes.backdrop} onClick={props.onClose} />
         </CSSTransition>,
-        portalElement
+        props.root
       )}
     </>
   );
