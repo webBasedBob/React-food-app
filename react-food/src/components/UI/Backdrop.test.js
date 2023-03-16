@@ -24,6 +24,15 @@ describe("Backdrop Component", () => {
 
     expect(backdropElm).toHaveClass("backdrop");
   });
+  it("does not render if props.display =  false", () => {
+    const backdrop = <Backdrop root={portalRoot} display={false} />;
+
+    render(backdrop);
+
+    const backdropElm = screen.getAllByRole("generic")[1];
+
+    expect(backdropElm).not.toHaveClass("backdrop");
+  });
   it("executes onClose function if backdrop is clicked", () => {
     render(backdrop);
 
