@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import { Cart } from "../../assets/icons";
+import { Cart } from "../../../assets/icons";
 import classes from "./HeaderCartButton.module.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";

@@ -13,9 +13,6 @@ const Backdrop = (props) => {
           unmountOnExit
           in={props.display}
           timeout={500}
-          onEnter={() => {
-            console.log("ee");
-          }}
           classNames={{
             appear: classes.init,
             appearActive: classes["active-appear"],
