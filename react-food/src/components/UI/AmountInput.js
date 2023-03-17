@@ -16,11 +16,11 @@ const AmountInput = (props) => {
       </div>
       <input
         ref={inputRef}
-        type="number"
         onChange={(e) => {
           props.changeHandler(Number(e.target.value));
         }}
         {...props.config}
+        type="number"
       ></input>
       <div onClick={increaseHandler} className={classes["amount__icon"]}>
         {Plus}
