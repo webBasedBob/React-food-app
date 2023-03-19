@@ -18,28 +18,112 @@
     object-fit: cover;
   }
 }
-.image-placeholder {
-}
 
-.text {
+.content {
   position: absolute;
-  // z-index: 10;
+  width: 100%;
+  height: 100%;
+  rotate: y 180deg;
+  backface-visibility: hidden;
+  & h3 {
+    text-transform: capitalize;
+  }
+}
+.placeholder {
+  width: 100%;
+  height: 100%;
+}
+.flip-outer-container {
+  position: absolute;
   width: 50%;
   height: 60%;
   top: 50%;
   left: 50%;
-  transform: translate(-20%, -50%);
-  & h3 {
-    text-transform: capitalize;
+  translate: -20% -50%;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  animation: animate-outer 1s ease-out;
+}
+.flip-inner-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  rotate: y 180deg;
+  animation: animate-inner 1s ease-out;
+}
+
+@keyframes animate-inner {
+  0% {
+    rotate: y 0deg;
+  }
+  30% {
+    rotate: y 0deg;
+  }
+  100% {
+    rotate: y -180deg;
+  }
+}
+
+@keyframes animate-outer {
+  0% {
+    z-index: -2;
+    translate: -100% -50%;
+    scale: 0.7 1;
+  }
+  54% {
+    z-index: -2;
+  }
+  55% {
+    z-index: inherit;
+  }
+  100% {
+    scale: 1 1;
+    translate: -20% -50%;
+  }
+}
+
+@keyframes animate-outer-reverse {
+  0% {
+    z-index: -2;
+    translate: -0% -50%;
+    scale: 0.7 1;
+  }
+  54% {
+    z-index: -2;
+  }
+  55% {
+    z-index: inherit;
+  }
+  100% {
+    scale: 1 1;
+    translate: -80% -50%;
+  }
+}
+
+@keyframes animate-inner-reverse {
+  0% {
+    rotate: y 0deg;
+  }
+  30% {
+    rotate: y 0deg;
+  }
+  100% {
+    rotate: y 180deg;
   }
 }
 
 .reverse {
   flex-direction: row-reverse;
-  & .text {
-    top: 50%;
-    right: 50%;
-    transform: translate(-80%, -50%);
+  & .content {
     text-align: end;
+  }
+  & .flip-outer-container {
+    position: absolute;
+    translate: -80% -50%;
+    animation: animate-outer-reverse 1s ease-out;
+  }
+  & .flip-inner-container {
+    animation: animate-inner-reverse 1s ease-out;
   }
 }

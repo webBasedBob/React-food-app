@@ -11,11 +11,15 @@ const AboutSection = (props) => {
       <div className={`orange-overlay__square ${classes.image}`}>
         <img src={props.image}></img>
       </div>
-      <div></div>
-      <SectionCard className={classes.text}>
-        <h3>{props.title}</h3>
-        <p>{props.text}</p>
-      </SectionCard>
+      <div className={classes["flip-outer-container"]}>
+        <div className={classes["flip-inner-container"]}>
+          <SectionCard className={classes.content}>
+            <h3>{props.title}</h3>
+            <p>{props.text}</p>
+          </SectionCard>
+          <SectionCard className={classes.placeholder}></SectionCard>
+        </div>
+      </div>
     </div>
   );
 };

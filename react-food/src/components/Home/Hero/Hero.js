@@ -1,5 +1,5 @@
 import React from "react";
-import heroImg1 from "../../../assets/hero-2.png";
+import heroImg1 from "../../../assets/hero-3.png";
 import SectionCard from "../UI/SectionCard";
 import classes from "./Hero.module.scss";
 
