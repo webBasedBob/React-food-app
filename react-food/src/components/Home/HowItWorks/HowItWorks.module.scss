@@ -1,0 +1,18 @@
+@use "../../../styles/confing.scss" as config;
+.wrapper {
+  // min-height: 8vh;
+  width: 100%;
+  background-color: #ffdd9d;
+  margin: 10rem 0;
+  // padding: 7rem;
+  height: fit-content;
+}
+
+.content {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 7rem 0;
+}

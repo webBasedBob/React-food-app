@@ -1,0 +1,22 @@
+.orange-overlay__square {
+  &::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #fea8092a;
+    left: 0;
+  }
+}
+
+.orange-overlay__round {
+  &::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #fea8092a;
+    left: 0;
+  }
+}

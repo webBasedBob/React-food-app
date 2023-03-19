@@ -1,0 +1,46 @@
+@use "../../../styles/confing.scss" as config;
+
+.card {
+  // height: 24rem;
+  background-color: config.$color-light-orange;
+  width: 30%;
+  border-radius: 5px;
+  color: config.$color-text-main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  gap: 1rem;
+}
+.text {
+  text-align: center;
+}
+.image {
+  // display: none;
+  width: 35%;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: auto;
+  position: relative;
+  outline: solid 5px #ffffff9a;
+  &::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fea8092a;
+    z-index: 50;
+    left: 0;
+  }
+  & img {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+.name {
+  text-transform: capitalize;
+}

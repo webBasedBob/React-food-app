@@ -2,7 +2,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Fragment } from "react";
 import Auth from "../../Auth/Auth";
 import HeaderCartButton from "./HeaderCartButton";
-import logo from "../../../assets/showarma-logo.jpg";
+import logo from "../../../assets/showarma-logo.png";
 import classes from "./Header.module.scss";
 import Button from "../../UI/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,29 +10,29 @@ import { authActions } from "../../../redux-store/auth";
 import { Link, NavLink } from "react-router-dom";
 import HeaderLink from "./HeaderLink";
 const Header = (props) => {
-  const dispatch = useDispatch();
-  const displayAuthModal = () => {
-    dispatch(authActions.displayModal());
-  };
-  let user = useSelector((state) => {
-    return state.auth.user;
-  });
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      dispatch(authActions.logIn(user.email));
-    }
-  });
-  const authModalIsDisplayed = useSelector((context) => {
-    return context.auth.displayAuthModal;
-  });
+  // const dispatch = useDispatch();
+  // const displayAuthModal = () => {
+  //   dispatch(authActions.displayModal());
+  // };
+  // let user = useSelector((state) => {
+  //   return state.auth.user;
+  // });
+  // const auth = getAuth();
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     dispatch(authActions.logIn(user.email));
+  //   }
+  // });
+  // const authModalIsDisplayed = useSelector((context) => {
+  //   return context.auth.displayAuthModal;
+  // });
   const HeaderLinkClass = ({ isActive }) => {
     if (isActive) return `${classes["nav-link"]} ${classes.active}`;
     return `${classes["nav-link"]}`;
   };
   return (
     <Fragment>
-      <Auth display={authModalIsDisplayed}></Auth>
+      {/* <Auth display={authModalIsDisplayed}></Auth> */}
       <header className={classes.header}>
         <Link to={"/"} className={classes.logo}>
           <img src={logo}></img>
