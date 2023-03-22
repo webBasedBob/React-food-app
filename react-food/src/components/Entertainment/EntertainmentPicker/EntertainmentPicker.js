@@ -1,11 +1,13 @@
 import React, { useState, useSyncExternalStore } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { entertainmentActions } from "../../redux-store/entertainment";
 import EntertainmentCategory from "./EntertainmentCategory";
 import classes from "./EntertainmentPicker.module.scss";
-import { getVideos } from "../../redux-store/entertainment";
-import Card from "../UI/Card";
-
+import {
+  getVideos,
+  entertainmentActions,
+} from "../../../redux-store/entertainment";
+import Card from "../../UI/Card";
+import Subcategory from "./Subcategory";
 const EntertainmentPicker = () => {
   const dispatch = useDispatch();
 
@@ -95,24 +97,37 @@ const EntertainmentPicker = () => {
     dispatch(getVideos(solvedCategoryId));
   };
   return (
-    <Card>
-      <div className={classes["circle-container"]}>
-        {Object.keys(categoriesObj).map((categ) => {
-          return (
-            <EntertainmentCategory
-              selectCategory={selectCategory}
-              key={categ}
-              name={categ}
-              handleSearch={handleSearch}
-            ></EntertainmentCategory>
-          );
-        })}
-        <div className={classes["inner-text"]}>
+    <>
+      <div className={classes.container}>
+        <div className={classes.title}>
           <p>Pick a category</p>
         </div>
+        <div className={classes["categories-container"]}>
+          <div className={classes.panel1}>
+            {Object.keys(categoriesObj).map((categ) => {
+              return (
+                <EntertainmentCategory
+                  selectCategory={selectCategory}
+                  key={categ}
+                  name={categ}
+                  handleSearch={handleSearch}
+                ></EntertainmentCategory>
+              );
+            })}
+          </div>
+          <div className={classes.panel2}>
+            <Subcategory />
+            <Subcategory />
+            <Subcategory />
+            <Subcategory />
+            <Subcategory />
+            <Subcategory />
+            <Subcategory />
+            <Subcategory />
+          </div>
+        </div>
       </div>
-      {/* <button  onClick={search}>Finish</button> */}
-    </Card>
+    </>
   );
 };
 

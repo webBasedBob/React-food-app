@@ -8,11 +8,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import deliveryIcon from "../../assets/delivery.png";
-import {
-  googleMapActions,
-  getAddressFromCoords,
-  getCoordsFromAddress,
-} from "../../redux-store";
+import { googleMapActions } from "../../redux-store/googleMap";
 import { useSelector, useDispatch } from "react-redux";
 import Map from "./Map";
 import AddressForm from "./AddressForm";
@@ -21,19 +17,23 @@ import Modal from "../UI/Modal";
 
 import { CSSTransition } from "react-transition-group";
 import classes from "./AddressPicker.module.scss";
+import { restaurantsActions } from "../../redux-store/restaurants";
 const AddressPicker = (props) => {
-  const [executeRestaurantsSearch, setExecuteRestaurantsSearch] =
-    useState(false);
+  const dispatch = useDispatch();
+  const shouldSearchForRestaurants = useSelector(
+    (state) => state.restaurants.shouldSearchForRestaurants
+  );
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setExecuteRestaurantsSearch(true);
+    dispatch(restaurantsActions.setShouldSearchForRestaurants(true));
+    dispatch(googleMapActions.hideModal());
   };
 
   return (
     <Modal onClose={props.onClose} display={props.display}>
       <form onSubmit={handleFormSubmit}>
         <AddressForm></AddressForm>
-        <Map shouldExecuteSearch={executeRestaurantsSearch}></Map>
+        <Map shouldExecuteSearch={shouldSearchForRestaurants}></Map>
       </form>
     </Modal>
   );

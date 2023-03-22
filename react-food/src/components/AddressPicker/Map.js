@@ -30,8 +30,8 @@ const Map = (props) => {
     const extractedLatLng = JSON.parse(
       JSON.stringify(e.latLng.toJSON(), null, 2)
     );
-    dispatch(googleMapActions.setMarkerPosition(extractedLatLng));
     dispatch(getAddressFromCoords(extractedLatLng));
+    dispatch(googleMapActions.setMarkerPosition(extractedLatLng));
   };
   if (map) {
     map.fitBounds(mapState.bounds, -150);
@@ -43,8 +43,6 @@ const Map = (props) => {
   // dispatch(getBoundsFromAddress(mapState.address));
 
   const [mapObj, setMapObj] = useState(null);
-
-  const libraries = ["places"];
   const resetBounds = () => {
     return;
     const bounds = {
@@ -72,26 +70,24 @@ const Map = (props) => {
   return (
     <>
       <div onDoubleClick={resetBounds}>
-        <LoadScript libraries={libraries} googleMapsApiKey={mapState.API_KEY}>
-          <GoogleMap
-            onClick={mapClickHandler}
-            mapContainerStyle={containerStyle}
-            center={mapState.locationCoords}
-            onLoad={handleMapLoad}
-            zoom={2}
-          >
-            {mapState.markerPosition.lng && (
-              <Marker
-                options={{
-                  opacity: 1,
-                  title: mapState.address,
-                  icon: "",
-                }}
-                position={mapState.markerPosition}
-              ></Marker>
-            )}
-          </GoogleMap>
-        </LoadScript>
+        <GoogleMap
+          onClick={mapClickHandler}
+          mapContainerStyle={containerStyle}
+          center={mapState.locationCoords}
+          onLoad={handleMapLoad}
+          zoom={2}
+        >
+          {mapState.markerPosition.lng && (
+            <Marker
+              options={{
+                opacity: 1,
+                title: mapState.address,
+                icon: "",
+              }}
+              position={mapState.markerPosition}
+            ></Marker>
+          )}
+        </GoogleMap>
       </div>
     </>
   );

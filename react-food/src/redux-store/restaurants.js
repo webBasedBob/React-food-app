@@ -10,6 +10,7 @@ export const restaurantsSlice = createSlice({
   initialState: {
     restaurants: [],
     modalIsVisible: false,
+    shouldSearchForRestaurants: false,
   },
   reducers: {
     storeRestaurants(state, action) {
@@ -28,6 +29,10 @@ export const restaurantsSlice = createSlice({
       state.restaurants = [];
       state.modalIsVisible = false;
       state.chosenRestaurant = null;
+      state.shouldSearchForRestaurants = false;
+    },
+    setShouldSearchForRestaurants(state, action) {
+      state.shouldSearchForRestaurants = action.payload;
     },
   },
 });

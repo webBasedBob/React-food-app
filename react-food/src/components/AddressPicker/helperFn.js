@@ -3,7 +3,7 @@ export const getRestaurants = (latLng, mapObj, mapState) => {
     const location = new window.google.maps.LatLng(latLng);
     const request = {
       query: "shawarma",
-      openNow: true,
+      openNow: false,
       location: location,
       radius: 500,
     };

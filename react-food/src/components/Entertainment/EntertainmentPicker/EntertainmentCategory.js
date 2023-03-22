@@ -7,9 +7,11 @@ const EntertainmentCategory = (props) => {
   };
 
   return (
-    <button onClick={handleSearch} className={classes.category}>
-      {props.name}
-    </button>
+    <div className={classes.container}>
+      <button onClick={handleSearch} className={classes.category}>
+        {props.name}
+      </button>
+    </div>
   );
 };
 

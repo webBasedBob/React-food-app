@@ -5,6 +5,7 @@ import Modal from "../UI/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { restaurantsActions } from "../../redux-store/restaurants";
 import { checkoutActions } from "../../redux-store/checkout";
+import { googleMapActions } from "../../redux-store/googleMap";
 const AvailableRestaurants = (props) => {
   const dispatch = useDispatch();
   const availableRestaurants = useSelector(
@@ -19,6 +20,8 @@ const AvailableRestaurants = (props) => {
     });
   const closeModal = () => {
     dispatch(restaurantsActions.hideModal());
+    dispatch(restaurantsActions.resetState());
+    dispatch(googleMapActions.resetState());
   };
   const handleRestaurantClick = (restaurantName) => {
     dispatch(restaurantsActions.setChosenRestaurant(restaurantName));

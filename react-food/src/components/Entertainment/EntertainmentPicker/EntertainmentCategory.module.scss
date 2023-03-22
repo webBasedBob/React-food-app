@@ -1,0 +1,55 @@
+@use "../../../styles/confing.scss" as config;
+.category {
+  border: none;
+  background: transparent;
+  color: #021420;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  text-align: center;
+  // background-color: #28a8ec;
+  background: linear-gradient(to bottom, #3deab3, #28a8ec);
+  padding: 10px;
+  clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+  width: 80%;
+  font-weight: 600;
+  position: relative;
+  z-index: 4;
+}
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s;
+  z-index: 4;
+
+  &:hover {
+    scale: 1.2;
+    &::before {
+      content: "";
+      // box-shadow: 10px 10px 10px 20px #28a8ec;
+      // box-shadow: 0 1px 30px 10px #ffffff3b;
+      position: absolute;
+      bottom: -37%;
+      right: 0px;
+      box-shadow: inset 0 -20px 20px 0px #ffffff3b;
+      // background-color: red;
+      // background-color: #28a7ec31;
+      height: 145%;
+      width: 100%;
+      // clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -35%;
+    right: -21px;
+    background-color: #28a8ec;
+    height: 50%;
+    width: 50%;
+    clip-path: polygon(0% 0%, 35% 100%, 100% 100%, 100% 60%, 40% 60%, 20% 0%);
+    z-index: 2;
+  }
+}

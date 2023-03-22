@@ -24,6 +24,9 @@
   margin-top: auto;
   position: relative;
   outline: solid 5px #ffffff9a;
+  &:hover img {
+    transform: scale(2);
+  }
   &::after {
     content: "";
     height: 100%;
@@ -39,6 +42,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    transition: all 1s;
   }
 }
 .name {

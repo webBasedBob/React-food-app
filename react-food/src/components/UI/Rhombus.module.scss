@@ -5,7 +5,7 @@
   justify-items: start;
   color: config.$color-text-main;
   width: 11rem;
-  height: 17rem;
+  height: 19rem;
 }
 .container {
   position: relative;
@@ -14,6 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2rem;
 }
 .top,
 .bottom {
@@ -72,4 +73,38 @@
 .icon {
   transform: rotate(45deg);
   width: 60%;
+}
+
+.container {
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  transform-origin: bottom;
+}
+.bounce,
+.container {
+  animation-name: bounce;
+  animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+}
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-50px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
 }

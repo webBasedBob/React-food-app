@@ -17,6 +17,7 @@ const CheckoutPage = () => {
   const mapModalIsShown = useSelector((state) => state.googleMap.modalIsShown);
   const handleMapModalClose = () => {
     dispatch(googleMapActions.hideModal());
+    dispatch(googleMapActions.resetState());
   };
   const handleCheckoutClose = () => {
     dispatch(checkoutActions.hideModal());
