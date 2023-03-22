@@ -9,10 +9,10 @@ const ActionButtons = () => {
   };
   return (
     <div className={classes.container}>
-      {/* <Button label="See Order"></Button> */}
+      <Button label="See Order"></Button>
       <Button
         config={{ onClick: goToYoutube }}
-        label="Watch something in the meantime"
+        label="Don't Get Bored"
       ></Button>
     </div>
   );

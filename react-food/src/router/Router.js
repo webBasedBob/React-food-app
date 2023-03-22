@@ -6,7 +6,7 @@ import CheckoutPage from "../pages/Checkout";
 import FoodDetailsPage from "../pages/FoodDetails";
 import DeliveryStatusPage from "../pages/DeliveryStatus";
 import AccountPage from "../pages/Account";
-import EntertainmentPage from "../pages/Entertainment";
+import EntertainmentPage, { entertainmentLoader } from "../pages/Entertainment";
 const Router = (props) => {
   const router = createBrowserRouter([
     {
@@ -35,6 +35,7 @@ const Router = (props) => {
           element: <DeliveryStatusPage></DeliveryStatusPage>,
         },
         {
+          loader: entertainmentLoader,
           path: "entertainment",
           element: <EntertainmentPage></EntertainmentPage>,
         },

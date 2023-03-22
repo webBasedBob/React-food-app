@@ -1,0 +1,19 @@
+@use "../../styles/confing.scss" as config;
+
+.status-row__line {
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.line {
+  height: 1rem;
+  width: 5px;
+  background-color: config.$color-main;
+  opacity: 0.2;
+}
+.status-row__line.active {
+  opacity: 1;
+  & .line {
+    opacity: 1;
+  }
+}

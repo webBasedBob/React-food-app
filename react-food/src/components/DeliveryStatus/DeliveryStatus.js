@@ -1,44 +1,47 @@
-import React from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import classes from "./DeliveryStatus.module.scss";
 import image from "../../assets/shawarma.png";
 import { Checkmark, Truck, Bag, FoodOutlet } from "../../assets/icons";
+import DeliveryStep from "./DeliveryStep";
+import BetweenStepsLine from "./BetweenStepsLine";
+import { useSelector } from "react-redux";
+import RemainingTime from "./RemainingTime";
 const DeliveryStatus = () => {
-  //this must be refactored
+  const deliveryStep = useSelector((state) => state.checkout.deliveryStep);
   return (
     <div className={classes.container}>
       <div className={classes.image}>
         <img src={image}></img>
       </div>
+      <RemainingTime />
       <div className={classes["status-container"]}>
-        <div className={classes["status-row"]}>
-          <div className={classes.icon}>{FoodOutlet}</div>
-          <h4 className={classes["text__step-name"]}>order received</h4>
-          <p className={classes["text__timestamp"]}>6:48 PM</p>
-        </div>
-        <div className={classes["status-row__line"]}>
-          <div className={classes.line}></div>
-        </div>
-        <div className={classes["status-row"]}>
-          <div className={classes.icon}>{Bag}</div>
-          <h4 className={classes["text__step-name"]}>order finished</h4>
-          <p className={classes["text__timestamp"]}>6:48 PM</p>
-        </div>
-        <div className={classes["status-row__line"]}>
-          <div className={classes.line}></div>
-        </div>
-        <div className={classes["status-row"]}>
-          <div className={classes.icon}>{Truck}</div>
-          <h4 className={classes["text__step-name"]}>order in delivery</h4>
-          <p className={classes["text__timestamp"]}>6:48 PM</p>
-        </div>
-        <div className={classes["status-row__line"]}>
-          <div className={classes.line}></div>
-        </div>
-        <div className={classes["status-row"]}>
-          <div className={classes.icon}>{Checkmark}</div>
-          <h4 className={classes["text__step-name"]}>order delivered</h4>
-          <p className={classes["text__timestamp"]}>6:48 PM</p>
-        </div>
+        <DeliveryStep
+          icon={FoodOutlet}
+          text="order received"
+          time="6:48 PM"
+          active={deliveryStep.includes("order received")}
+        />
+        <BetweenStepsLine active={deliveryStep.includes("order finished")} />
+        <DeliveryStep
+          icon={Bag}
+          text="order finished"
+          time="6:48 PM"
+          active={deliveryStep.includes("order finished")}
+        />
+        <BetweenStepsLine active={deliveryStep.includes("order in delivery")} />
+        <DeliveryStep
+          icon={Truck}
+          text="order in delivery"
+          time="6:48 PM"
+          active={deliveryStep.includes("order in delivery")}
+        />
+        <BetweenStepsLine active={deliveryStep.includes("order delivered")} />
+        <DeliveryStep
+          icon={Checkmark}
+          text="order delivered"
+          time="6:48 PM"
+          active={deliveryStep.includes("order delivered")}
+        />
       </div>
     </div>
   );

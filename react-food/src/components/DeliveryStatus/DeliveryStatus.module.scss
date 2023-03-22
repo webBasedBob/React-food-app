@@ -6,7 +6,11 @@
   align-items: center;
   gap: 2rem;
 }
-
+.remaining-time {
+  display: flex;
+  gap: 1rem;
+  text-transform: capitalize;
+}
 .image {
   display: inline-block;
   border-radius: 50%;
@@ -54,39 +58,4 @@
   flex-direction: column;
   gap: 0;
   min-width: 20rem;
-}
-.status-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: space-between;
-  color: config.$color-main;
-}
-.icon {
-  height: 2rem;
-  width: 2rem;
-  background-color: config.$color-main;
-  border-radius: 50%;
-  padding: 5px;
-  color: #fff;
-}
-.status-row__line {
-  width: 2rem;
-  display: flex;
-  justify-content: center;
-}
-.line {
-  height: 1rem;
-  width: 5px;
-  background-color: config.$color-main;
-  transform: scale(1.1);
-}
-.text__step-name {
-  margin: 0;
-  padding: 0;
-  text-transform: capitalize;
-}
-.text__timestamp {
-  margin: 0;
-  padding: 0;
 }

@@ -38,10 +38,14 @@ export const entertainmentSlice = createSlice({
     chosenTopic: null,
     videos: [],
     playerIsDisplayed: false,
+    categories: {},
   },
   reducers: {
     setChosenTopic(state, action) {
       state.chosenTopic = action.payload;
+    },
+    setCategories(state, action) {
+      state.categories = action.payload;
     },
   },
   extraReducers: (builder) => {

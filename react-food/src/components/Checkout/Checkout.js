@@ -11,8 +11,8 @@ import { cartActions } from "../../redux-store/cart";
 import { checkoutActions } from "../../redux-store/checkout";
 import { googleMapActions } from "../../redux-store/googleMap";
 import { restaurantsActions } from "../../redux-store/restaurants";
+import state from "../../redux-store/index";
 const Checkout = (props) => {
-  //i tkink i whould combine state slices to avoid code like this, it's probably a sign that those slices belong together
   const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.items);
   const address = useSelector((state) => state.googleMap.address);
@@ -30,11 +30,55 @@ const Checkout = (props) => {
     };
     return orderObj;
   };
+
+  const countDownTimer = (interval) => {
+    let timer = setInterval(() => {
+      let interval2 = state.getState().checkout.oneSecondInMiliseconds;
+      if (interval2 < interval) {
+        clearInterval(timer);
+        countDownTimer(interval2);
+        return;
+      }
+      const remainingTime = state.getState().checkout.remainingTime;
+      if (remainingTime <= 0) {
+        clearInterval(timer);
+        return;
+      }
+      dispatch(checkoutActions.decreaseRemainigTime());
+    }, interval);
+  };
+  const startDeliveryTime = () => {
+    countDownTimer(1000);
+  };
+
+  const startDeliveryTime2 = () => {
+    let timer = setInterval(() => {
+      let interval = state.getState().checkout.oneSecondInMiliseconds;
+      if (interval < 1000) {
+        clearInterval(timer);
+        let timer2 = setInterval(() => {
+          const remainingTime2 = state.getState().checkout.remainingTime;
+          if (remainingTime2 <= 0) {
+            clearInterval(timer2);
+            return;
+          }
+          dispatch(checkoutActions.decreaseRemainigTime());
+        }, interval);
+      }
+      const remainingTime = state.getState().checkout.remainingTime;
+      if (remainingTime <= 0) {
+        clearInterval(timer);
+        return;
+      }
+      dispatch(checkoutActions.decreaseRemainigTime());
+    }, 1000);
+  };
   const handleConfirmOrder = () => {
     dispatch(checkoutActions.setFinalOrder(createOrderObj()));
     dispatch(checkoutActions.resetState());
     dispatch(googleMapActions.resetState());
     dispatch(restaurantsActions.resetState());
+    startDeliveryTime();
     navigate("/delivery-status");
   };
 

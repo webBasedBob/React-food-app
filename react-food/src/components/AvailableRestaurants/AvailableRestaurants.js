@@ -40,6 +40,9 @@ const AvailableRestaurants = (props) => {
           ></Restaurant>
         );
       })}
+      {sortedRestaurantsArr.length === 0 && (
+        <h3>No available restaurants found near you</h3>
+      )}
     </Modal>
   );
 };
