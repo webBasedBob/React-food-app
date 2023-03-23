@@ -10,9 +10,9 @@ const Hero = () => {
         <div className={classes[`hero-text__container`]}>
           <h2>Hungry and bored? We've got you covered!</h2>
           <p>
-            Not only do we offer delicious shawarma that will tantalize your
-            taste buds, but we also provide free entertainment to make your
-            delivery experience even better.
+            Not only do we offer delicious shawarma that will delight your taste
+            buds, but we also provide free entertainment to make your delivery
+            experience even better.
           </p>
           <p>
             The entertaninent is on the house, you can have it while waiting for

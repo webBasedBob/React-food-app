@@ -1,5 +1,6 @@
 @use "../../../styles/confing.scss" as config;
 .category {
+  cursor: pointer;
   border: none;
   background: transparent;
   color: #021420;
@@ -7,7 +8,11 @@
   font-size: 1.2rem;
   text-align: center;
   // background-color: #28a8ec;
-  background: linear-gradient(to bottom, #3deab3, #28a8ec);
+  background: linear-gradient(
+    to bottom,
+    config.$color-light-orange,
+    config.$color-dark-orange
+  );
   padding: 10px;
   clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
   width: 80%;
@@ -23,7 +28,7 @@
   position: relative;
   transition: all 0.3s;
   z-index: 4;
-
+  cursor: pointer;
   &:hover {
     scale: 1.2;
     &::before {
@@ -46,7 +51,7 @@
     position: absolute;
     bottom: -35%;
     right: -21px;
-    background-color: #28a8ec;
+    background-color: config.$color-dark-orange;
     height: 50%;
     width: 50%;
     clip-path: polygon(0% 0%, 35% 100%, 100% 100%, 100% 60%, 40% 60%, 20% 0%);

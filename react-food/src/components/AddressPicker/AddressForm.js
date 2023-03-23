@@ -17,7 +17,7 @@ const AddressForm = () => {
     dispatch(getCoordsFromAddress(locationFieldRef.current.value));
   }, 700);
   return (
-    <div>
+    <div className={classes.container}>
       <Input
         input={{
           id: "location-search",
@@ -31,7 +31,7 @@ const AddressForm = () => {
         flexColumn={true}
       ></Input>
       <div>
-        <div>
+        <div className={classes["address-container"]}>
           <p>Deliver to:</p>
           <p>{finalAddress}</p>
         </div>

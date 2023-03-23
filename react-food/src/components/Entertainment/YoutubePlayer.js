@@ -17,7 +17,7 @@ const YoutubePlayer = () => {
     setIndex(getRandomInt(0, 49));
   };
   return (
-    <>
+    <div className={classes.container}>
       <YouTube
         videoId={videoId}
         iframeClassName={classes.iframe}
@@ -27,7 +27,7 @@ const YoutubePlayer = () => {
         label="Get Another One"
         config={{ onClick: handleGetAnotherVideo }}
       ></Button>
-    </>
+    </div>
   );
 };
 

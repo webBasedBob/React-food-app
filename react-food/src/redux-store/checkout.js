@@ -10,7 +10,7 @@ export const checkoutSlice = createSlice({
   initialState: {
     checkoutModalIsVisible: false,
     remainingTime: 20 * 60,
-    deliveryStep: [],
+    deliveryStep: ["awaiting order"],
     oneSecondInMiliseconds: 1000,
   },
   reducers: {

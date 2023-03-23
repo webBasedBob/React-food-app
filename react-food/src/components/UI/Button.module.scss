@@ -4,17 +4,17 @@
   font: inherit;
   cursor: pointer;
   background-image: none;
-  background-color: config.$color-button-primary;
-  @include config.color-gradient-main;
+  background-color: config.$color-light-orange;
+  // @include config.color-gradient-main;
   border: none;
-  color: config.$color-main;
+  color: config.$color-text-main;
   padding: 0.25rem 2rem;
   border-radius: 20px;
   font-weight: bold;
   transition: all 0.2s;
   &:hover,
   &:active {
-    @include config.color-gradient-main-hover;
+    // @include config.color-gradient-main-hover;
     color: #fff;
   }
 }

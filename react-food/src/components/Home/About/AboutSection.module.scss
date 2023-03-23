@@ -33,7 +33,17 @@
   width: 100%;
   height: 100%;
 }
-.flip-outer-container {
+
+.animate-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  rotate: y 180deg;
+  animation: animate-inner 1s ease-out;
+}
+
+.animate-outer {
   position: absolute;
   width: 50%;
   height: 60%;
@@ -43,14 +53,6 @@
   perspective: 1000px;
   transform-style: preserve-3d;
   animation: animate-outer 1s ease-out;
-}
-.flip-inner-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  rotate: y 180deg;
-  animation: animate-inner 1s ease-out;
 }
 
 @keyframes animate-inner {
@@ -118,12 +120,12 @@
   & .content {
     text-align: end;
   }
-  & .flip-outer-container {
+  & .animate-inner {
+    animation: animate-inner-reverse 1s ease-out;
+  }
+  & .animate-outer {
     position: absolute;
     translate: -80% -50%;
     animation: animate-outer-reverse 1s ease-out;
-  }
-  & .flip-inner-container {
-    animation: animate-inner-reverse 1s ease-out;
   }
 }

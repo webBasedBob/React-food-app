@@ -80,8 +80,7 @@
   animation-iteration-count: 1;
   transform-origin: bottom;
 }
-.bounce,
-.container {
+.bounce {
   animation-name: bounce;
   animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
 }

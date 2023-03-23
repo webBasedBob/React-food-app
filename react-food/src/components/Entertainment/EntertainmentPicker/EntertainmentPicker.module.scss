@@ -1,3 +1,5 @@
+@use "../../../styles/confing.scss" as config;
+
 .container {
   background-color: #021420;
   height: 100%;
@@ -18,7 +20,7 @@
   gap: 2rem;
   overflow: scroll;
   align-items: center;
-  border-right: solid #28a8ec 5px;
+  border-right: solid config.$color-dark-orange 5px;
   padding: 2rem 0;
 }
 .panel1::-webkit-scrollbar {
@@ -49,7 +51,11 @@
   font-size: 1.2rem;
   text-align: center;
   // background-color: #28a8ec;
-  background: linear-gradient(to bottom, #3deab3, #28a8ec);
+  background: linear-gradient(
+    to bottom,
+    config.$color-light-orange,
+    config.$color-dark-orange
+  );
   padding: 5px;
   // clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
   // width: 80%;
