@@ -43,8 +43,7 @@ const ExpandedMeal = (props) => {
             price={targetMeal.price}
             image={targetMeal.image}
             meal={targetMeal}
-            showBtn={false}
-            showPrice={false}
+            className={classes["expanded-meal"]}
           />
         }
         <SouceSelector selectedSauces={saucesSelected}></SouceSelector>

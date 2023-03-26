@@ -16,8 +16,10 @@ const RemainingTime = () => {
   };
   return (
     <div className={classes["remaining-time"]}>
-      <p>remaining time:</p>
-      <p>{formattedTime}</p>
+      <div className={classes["time-container"]}>
+        <p>remaining time:</p>
+        <p>{formattedTime}</p>
+      </div>
       <Button label="Speed Up" config={{ onClick: handleSpeedUp }} />
     </div>
   );

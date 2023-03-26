@@ -23,7 +23,7 @@ const AboutSection = (props) => {
             <h3>{props.title}</h3>
             <p>{props.text}</p>
           </SectionCard>
-          <SectionCard className={classes.placeholder}></SectionCard>
+          {/* <SectionCard className={classes.placeholder}></SectionCard> */}
         </div>
       </div>
     </div>

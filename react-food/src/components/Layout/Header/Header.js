@@ -31,7 +31,7 @@ const Header = (props) => {
     return `${classes["nav-link"]}`;
   };
   return (
-    <Fragment>
+    <div className={classes.container}>
       {/* <Auth display={authModalIsDisplayed}></Auth> */}
       <header className={classes.header}>
         <Link to={"/"} className={classes.logo}>
@@ -66,7 +66,7 @@ const Header = (props) => {
           ></Button>
         )} */}
       </header>
-    </Fragment>
+    </div>
   );
 };
 

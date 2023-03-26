@@ -2,7 +2,7 @@
   width: 100%;
   height: 25rem;
   position: relative;
-  margin: 2rem;
+  // margin: 2rem;
   display: flex;
   padding: 2rem;
 }
@@ -10,6 +10,7 @@
   position: relative;
   background-color: #ffffff9a;
   height: 100%;
+  width: 60%;
   border-radius: 10px;
   overflow: hidden;
   & img {
@@ -27,6 +28,7 @@
   backface-visibility: hidden;
   & h3 {
     text-transform: capitalize;
+    margin: 0 0 1rem 0;
   }
 }
 .placeholder {
@@ -46,9 +48,9 @@
 .animate-outer {
   position: absolute;
   width: 50%;
-  height: 60%;
+  height: 70%;
   top: 50%;
-  left: 50%;
+  left: 58%;
   translate: -20% -50%;
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -121,11 +123,79 @@
     text-align: end;
   }
   & .animate-inner {
+    // left: 50%;
     animation: animate-inner-reverse 1s ease-out;
   }
+
   & .animate-outer {
     position: absolute;
     translate: -80% -50%;
     animation: animate-outer-reverse 1s ease-out;
+    left: 42%;
   }
+}
+
+@media (max-width: 700px) {
+  .image {
+    position: static;
+    height: auto;
+    width: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .content {
+    position: static;
+    rotate: x 180deg;
+  }
+  .animate-outer {
+    position: static;
+  }
+  .animate-outer {
+    width: auto;
+    height: auto;
+    translate: 0% 0%;
+  }
+  .reverse {
+    & .content {
+      text-align: start;
+    }
+    & .animate-inner {
+      animation: animate-inner-column 1s ease-out;
+    }
+
+    & .animate-outer {
+      position: static;
+      animation: none;
+      width: auto;
+      height: auto;
+      translate: 0% 0%;
+    }
+  }
+  .container {
+    width: 100%;
+    height: 40rem;
+    flex-direction: column;
+  }
+  .animate-inner {
+    rotate: x 180deg;
+    animation: animate-inner-column 1s ease-out;
+  }
+  .animate-outer {
+    animation: none;
+  }
+}
+
+@keyframes animate-inner-column {
+  0% {
+    rotate: x 0deg;
+  }
+
+  100% {
+    rotate: x 180deg;
+  }
+}
+
+@media (max-width: 350px) {
 }

@@ -208,3 +208,11 @@
     left: 15%;
   }
 }
+
+@media (max-width: 500px) {
+  .container {
+    height: 10rem;
+    width: 10rem;
+    overflow: hidden;
+  }
+}

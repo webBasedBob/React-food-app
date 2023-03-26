@@ -4,3 +4,13 @@
   gap: 1rem;
   text-transform: capitalize;
 }
+.time-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+@media (max-width: 400px) {
+  .remaining-time {
+    flex-direction: column;
+  }
+}

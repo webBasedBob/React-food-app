@@ -17,3 +17,28 @@
 .extra-padding {
   padding: 1rem;
 }
+.expanded-meal {
+  // flex-direction: column;
+  & h5 {
+    display: none;
+  }
+  & button {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .expanded-meal {
+    flex-direction: column;
+    & div:first-child {
+      height: 10rem;
+      width: 10rem;
+    }
+    & div:nth-child(2) {
+      text-align: center;
+    }
+  }
+  .extra-padding {
+    padding: 0rem;
+  }
+}

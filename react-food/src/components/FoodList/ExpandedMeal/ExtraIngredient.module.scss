@@ -12,3 +12,15 @@
     color: config.$color-main;
   }
 }
+@media (max-width: 550px) {
+  .extra-ingr {
+    margin: 0;
+    gap: 1rem;
+    & input {
+      width: 2rem;
+    }
+    &__price {
+      margin-left: auto;
+    }
+  }
+}
