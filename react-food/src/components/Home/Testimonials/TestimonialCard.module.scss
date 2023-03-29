@@ -3,7 +3,8 @@
 .card {
   // height: 24rem;
   background-color: config.$color-light-orange;
-  width: 30%;
+  width: 20rem;
+  height: 22rem;
   border-radius: 5px;
   color: config.$color-text-main;
   display: flex;
@@ -12,6 +13,7 @@
   justify-content: space-between;
   padding: 2rem 1rem;
   gap: 1rem;
+  justify-content: center;
 }
 .text {
   text-align: center;
@@ -47,4 +49,18 @@
 }
 .name {
   text-transform: capitalize;
+}
+
+@media (max-width: 1200px) {
+  .card:nth-child(3) {
+    grid-column: 1/-1;
+  }
+}
+
+@media (max-width: 470px) {
+  .card {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+  }
 }

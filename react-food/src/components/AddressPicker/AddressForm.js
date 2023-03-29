@@ -1,4 +1,4 @@
-import React, { useDebugValue, useRef } from "react";
+import React, { useRef } from "react";
 import Input from "../UI/Input";
 import Card from "../UI/Card";
 import classes from "./AddressForm.module.scss";
@@ -9,13 +9,16 @@ import {
   getCoordsFromAddress,
   googleMapActions,
 } from "../../redux-store/googleMap";
+
 const AddressForm = () => {
   const finalAddress = useSelector((state) => state.googleMap.address);
   const locationFieldRef = useRef();
   const dispatch = useDispatch();
-  const handleLocationChage = debounce(() => {
+
+  const handleLocationChange = debounce(() => {
     dispatch(getCoordsFromAddress(locationFieldRef.current.value));
   }, 700);
+
   return (
     <div className={classes.container}>
       <Input
@@ -23,13 +26,13 @@ const AddressForm = () => {
           id: "location-search",
           type: "text",
           style: { width: "50%" },
-          onChange: handleLocationChage,
+          onChange: handleLocationChange,
         }}
         ref={locationFieldRef}
         label="Location Search"
         className={classes["location-search-input"]}
         flexColumn={true}
-      ></Input>
+      />
       <div>
         <div className={classes["address-container"]}>
           <p>Deliver to:</p>
@@ -40,8 +43,9 @@ const AddressForm = () => {
           approximate
         </p>
       </div>
-      <Button config={{ type: "submit" }} label="Find restaurants"></Button>
+      <Button config={{ type: "submit" }} label="Find restaurants" />
     </div>
   );
 };
+
 export default AddressForm;
