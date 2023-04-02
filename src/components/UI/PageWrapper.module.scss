@@ -1,0 +1,13 @@
+.wrapper {
+  max-width: 75rem;
+  margin: 0rem auto 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 7rem;
+}
+@media (max-width: 450px) {
+  .wrapper {
+    padding: 5px;
+  }
+}
