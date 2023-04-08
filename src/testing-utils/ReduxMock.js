@@ -1,10 +1,10 @@
-import {
-  createSlice,
-  createReducer,
-  configureStore,
-  createAsyncThunk,
-} from "@reduxjs/toolkit";
-import store from "./index";
+import { render } from "@testing-library/react";
+import React from "react";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+
+import { createSlice, createReducer, createAsyncThunk } from "@reduxjs/toolkit";
+import store from "../redux-store/index";
 export const getAddressFromCoords = createAsyncThunk(
   "googleMap/getAddressFromCoords",
   async (latLng) => {
@@ -163,4 +163,24 @@ export const googleMapSlice = createSlice({
   },
 });
 
-export const googleMapActions = googleMapSlice.actions;
+const googleMapActions = googleMapSlice.actions;
+
+const AllTheProviders = ({ children }) => {
+  const store = configureStore({
+    reducer: {
+      googleMap: googleMapSlice.reducer,
+    },
+  });
+  return (
+    <React.StrictMode>
+      <Provider store={store}>{children}</Provider>
+    </React.StrictMode>
+  );
+};
+
+const customRender = (ui, options) =>
+  render(ui, { wrapper: AllTheProviders, ...options });
+
+export * from "@testing-library/react";
+
+export { customRender as render };
