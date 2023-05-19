@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# SHOWARMA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live version:https://react-course-proje.web.app/
 
-## Available Scripts
+Shawarma delivery app with a twist
 
-In the project directory, you can run:
+## Table of contents
+- [Introduction](#introduction)
+- [Tech stack](#tech-stack)
+- [Project walk-through](#walk-through)
+- [Setup/Launch](#setup)
+- [Status](#status)
 
-### `npm start`
+# Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A(nother) food delivery app, where users can buy shawarma and watch Youtube videos during delivery and 
+afterwards. The app uses a series of APIs, like Google Maps API to embed a map in the app, convert coordinates to addresses 
+and search for restaurants near a point on the map; Youtube Data v3 API to search for content and embed a Youtube player 
+inside the app.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Tech Stack
 
-### `npm test`
+- React
+- Redux
+- React Router
+- SASS
+- React Testing Library
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Walk Through
 
-### `npm run build`
+You can check the app's pages walk-through down below:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Project's pages walkthrough:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### [Landing Page](https://react-course-proje.web.app/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  Used [ChatGPT](https://openai.com/blog/chatgpt) for text content and [Midjourney](https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F) for images.
+  ![image](https://github.com/webBasedBob/React-food-app/assets/95532233/312b07c8-1a18-4a38-85fe-1b37a8cc3559)
 
-### `npm run eject`
+  
+#### [Meals](https://react-course-proje.web.app/food)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  Here the users can choose from available Shawarmas and order them:
+  
+  ![image](https://github.com/webBasedBob/React-food-app/assets/95532233/dc109069-4025-4334-a34b-130242d18afa)
+  
+  And customize the order:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](https://github.com/webBasedBob/React-food-app/assets/95532233/50b07468-9df5-41ee-a15d-23baf238da3c)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### [Checkout](https://react-course-proje.web.app/checkout)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Here the users can modify their order before sending it:
 
-## Learn More
+![image](https://github.com/webBasedBob/React-food-app/assets/95532233/c49aca5c-6179-47c0-a749-677377f180b4)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Then they can pick their address using a Google Maps map embedded in the page:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://github.com/webBasedBob/React-food-app/assets/95532233/5d126642-2ac2-4a0a-96fa-19b99f135850)
 
-### Code Splitting
+Then they pick a restaurant to prepare their Shawarma:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![image](https://github.com/webBasedBob/React-food-app/assets/95532233/e6287ccd-d6e0-4ebe-8562-6c2eb6cf2582)
 
-### Analyzing the Bundle Size
+And then send the final order:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![image](https://github.com/webBasedBob/React-food-app/assets/95532233/df32867a-2837-4283-a57a-d9b9239d1631)
 
-### Making a Progressive Web App
+#### [Delivery Status](https://react-course-proje.web.app/delivery-status)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Here the users can check the status of their order:
 
-### Advanced Configuration
+![image](https://github.com/webBasedBob/React-food-app/assets/95532233/af4ffea5-8efe-45ff-b72e-b31919234d0e)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### [Entertainment Page](https://react-course-proje.web.app/entertainment)
 
-### Deployment
+The twist of the app, users can watch youtube videos untill their food arrives, and while they eat their shawarma: 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![image](https://github.com/webBasedBob/React-food-app/assets/95532233/651b4e99-9216-4d6d-9ead-16b80204c71e)
 
-### `npm run build` fails to minify
+# Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To run the the app on your machine and play around, just clone the repo and run npm install command in your terminal, then run npm run start command (which is a npm script - can be found in package.json) to start a development server - and you're done.
+
+# Status
+
+The project is done, it's time for a new one.
+
