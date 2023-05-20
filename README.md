@@ -40,7 +40,7 @@ Project's pages walkthrough:
   
 #### [Meals](https://react-course-proje.web.app/food)
 
-  Here the users can choose from available Shawarmas and order them:
+  Here the users can choose from available Shawarmas :
   
   ![image](https://github.com/webBasedBob/React-food-app/assets/95532233/dc109069-4025-4334-a34b-130242d18afa)
   
@@ -74,13 +74,20 @@ Here the users can check the status of their order:
 
 #### [Entertainment Page](https://react-course-proje.web.app/entertainment)
 
-The twist of the app, users can watch youtube videos untill their food arrives, and while they eat their shawarma: 
+The twist of the app, users can watch youtube videos untill their food arrives, and while they eat their shawarma.
+
+Here they can pick a video category:
 
 ![image](https://github.com/webBasedBob/React-food-app/assets/95532233/651b4e99-9216-4d6d-9ead-16b80204c71e)
 
+And here they can watch videos from that category (a shuffle button is placed at the bottom of the screen):
+
+![image](https://github.com/webBasedBob/React-food-app/assets/95532233/dbdd634a-f904-4504-96d6-1a232270249c)
+
+
 # Setup
 
-To run the the app on your machine and play around, just clone the repo and run npm install command in your terminal, then run npm run start command (which is a npm script - can be found in package.json) to start a development server - and you're done.
+To run the the app on your machine and play around, just clone the repo and run npm install command in your terminal, then run npm run start command to start a development server - and you're done.
 
 # Status
 
